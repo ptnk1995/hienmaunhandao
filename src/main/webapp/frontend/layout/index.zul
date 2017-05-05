@@ -1,9 +1,4 @@
 <zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" xmlns:w="client">
-<div>
-<a href="/">Go to USER area</a>
-<br>
-<a href="/nguoidung">Go to ADMIN area</a>
-</div>
 	<div class="slider-wrapper">
 		<div class="slider">
 			<div class="fs_loader"></div>

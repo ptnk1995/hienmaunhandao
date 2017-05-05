@@ -2,10 +2,7 @@
 <!--DOCTYPE xml-->
 
  <language-addon xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.zkoss.org/2005/zul/zul.xsd
-  http://www.springframework.org/schema/security 
-  http://www.springframework.org/schema/security/spring-security.xsd"
-	xmlns:security="http://www.springframework.org/schema/security" >  
+ xsi:schemaLocation="http://www.zkoss.org/2005/zul/zul.xsd">    
    <!-- The name of this addon. It must be unique -->  
    <addon-name>ckezbind</addon-name>  
    <!-- Specifies what other addon this depends  
@@ -37,21 +34,6 @@
        </attribute>  
      </annotation>  
    </component> 
-   <security:user-service id="userService">
-<security:user name="user1" password="111" authorities="ROLE_USER"/>
-<security:user name="admin1" password="111"
-authorities="ROLE_USER,ROLE_ADMIN"/>
-</security:user-service>
-
-<security:authentication-manager>
-<security:authentication-provider user-service-ref="userService"/>
-</security:authentication-manager>
-
-<security:http pattern="/favicon.ico" security="none"/>
-
-<security:http auto-config="true">
-<security:intercept-url pattern="/index.zul" access="hasRole('ROLE_USER')"/>
-<security:intercept-url pattern="/login.zul" access="hasRole('ROLE_ADMIN')"/>
-</security:http>
+  
     
  </language-addon>  
