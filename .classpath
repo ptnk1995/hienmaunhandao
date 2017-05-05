@@ -1,483 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="target/classes" path="src/main/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" output="target/classes" path="target/generated-sources/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/javax/transaction/javax.transaction-api/1.2/javax.transaction-api-1.2.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-core/4.2.5.RELEASE/spring-core-4.2.5.RELEASE.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-context/4.2.5.RELEASE/spring-context-4.2.5.RELEASE.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-aop/4.2.5.RELEASE/spring-aop-4.2.5.RELEASE.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-beans/4.2.5.RELEASE/spring-beans-4.2.5.RELEASE.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-expression/4.2.5.RELEASE/spring-expression-4.2.5.RELEASE.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/ch/qos/logback/logback-classic/1.1.7/logback-classic-1.1.7.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/ch/qos/logback/logback-core/1.1.7/logback-core-1.1.7.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.7.21/slf4j-api-1.7.21.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/slf4j/jcl-over-slf4j/1.7.21/jcl-over-slf4j-1.7.21.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/slf4j/jul-to-slf4j/1.7.21/jul-to-slf4j-1.7.21.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/slf4j/log4j-over-slf4j/1.7.21/log4j-over-slf4j-1.7.21.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/yaml/snakeyaml/1.16/snakeyaml-1.16.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/apache/tomcat/embed/tomcat-embed-core/7.0.54/tomcat-embed-core-7.0.54.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/apache/tomcat/embed/tomcat-embed-el/7.0.54/tomcat-embed-el-7.0.54.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/apache/tomcat/embed/tomcat-embed-logging-juli/7.0.54/tomcat-embed-logging-juli-7.0.54.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/apache/tomcat/embed/tomcat-embed-websocket/7.0.54/tomcat-embed-websocket-7.0.54.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate-validator/5.2.4.Final/hibernate-validator-5.2.4.Final.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/fasterxml/classmate/1.3.1/classmate-1.3.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-databind/2.6.6/jackson-databind-2.6.6.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-annotations/2.6.6/jackson-annotations-2.6.6.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-core/2.6.6/jackson-core-2.6.6.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-web/4.2.5.RELEASE/spring-web-4.2.5.RELEASE.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-webmvc/4.2.5.RELEASE/spring-webmvc-4.2.5.RELEASE.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/aspectj/aspectjweaver/1.8.9/aspectjweaver-1.8.9.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-jdbc/7.0.54/tomcat-jdbc-7.0.54.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-juli/7.0.54/tomcat-juli-7.0.54.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-jdbc/4.2.5.RELEASE/spring-jdbc-4.2.5.RELEASE.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-tx/4.2.5.RELEASE/spring-tx-4.2.5.RELEASE.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate-entitymanager/5.1.0.Final/hibernate-entitymanager-5.1.0.Final.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate-core/5.1.0.Final/hibernate-core-5.1.0.Final.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/antlr/antlr/2.7.7/antlr-2.7.7.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/apache/geronimo/specs/geronimo-jta_1.1_spec/1.1.1/geronimo-jta_1.1_spec-1.1.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/jboss/jandex/2.0.0.Final/jandex-2.0.0.Final.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/hibernate/common/hibernate-commons-annotations/5.0.1.Final/hibernate-commons-annotations-5.0.1.Final.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-jpa/1.9.4.RELEASE/spring-data-jpa-1.9.4.RELEASE.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-commons/1.11.4.RELEASE/spring-data-commons-1.11.4.RELEASE.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-orm/4.2.5.RELEASE/spring-orm-4.2.5.RELEASE.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-aspects/4.2.5.RELEASE/spring-aspects-4.2.5.RELEASE.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate-infinispan/5.1.0.Final/hibernate-infinispan-5.1.0.Final.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/infinispan/infinispan-core/8.1.0.Final/infinispan-core-8.1.0.Final.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/infinispan/infinispan-commons/8.1.0.Final/infinispan-commons-8.1.0.Final.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/jgroups/jgroups/3.6.4.Final/jgroups-3.6.4.Final.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/jboss/spec/javax/transaction/jboss-transaction-api_1.1_spec/1.0.1.Final/jboss-transaction-api_1.1_spec-1.0.1.Final.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/jboss/marshalling/jboss-marshalling-osgi/1.4.10.Final/jboss-marshalling-osgi-1.4.10.Final.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/zkoss/zk/zkbind/8.0.1.1/zkbind-8.0.1.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/zkoss/zk/zul/8.0.1.1/zul-8.0.1.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/zkoss/zk/zk/8.0.1.1/zk-8.0.1.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/zkoss/common/zweb/8.0.1.1/zweb-8.0.1.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/zkoss/common/zcommon/8.0.1.1/zcommon-8.0.1.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/commons-fileupload/commons-fileupload/1.2.2/commons-fileupload-1.2.2.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/zkoss/common/zel/8.0.1.1/zel-8.0.1.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-jdk14/1.7.21/slf4j-jdk14-1.7.21.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.8/commons-codec-1.8.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/zkoss/zk/zkplus/8.0.1.1/zkplus-8.0.1.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/zkoss/zk/zhtml/8.0.1.1/zhtml-8.0.1.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/commons-io/commons-io/2.4/commons-io-2.4.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/zkoss/zsoup/1.8.2.5/zsoup-1.8.2.5.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/querydsl/querydsl-apt/4.1.0/querydsl-apt-4.1.0.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/querydsl/querydsl-codegen/4.1.0/querydsl-codegen-4.1.0.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/querydsl/querydsl-core/4.1.0/querydsl-core-4.1.0.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/google/guava/guava/19.0/guava-19.0.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/mysema/commons/mysema-commons-lang/0.2.4/mysema-commons-lang-0.2.4.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/infradna/tool/bridge-method-annotation/1.13/bridge-method-annotation-1.13.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/mysema/codegen/codegen/0.6.8/codegen-0.6.8.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/eclipse/jdt/core/compiler/ecj/4.3.1/ecj-4.3.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/reflections/reflections/0.9.9/reflections-0.9.9.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/google/code/findbugs/annotations/2.0.1/annotations-2.0.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/querydsl/querydsl-jpa/4.1.0/querydsl-jpa-4.1.0.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-log4j12/1.7.21/slf4j-log4j12-1.7.21.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.17/log4j-1.2.17.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/jasypt/jasypt/1.9.2/jasypt-1.9.2.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/apache/shiro/shiro-core/1.2.4/shiro-core-1.2.4.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/commons-beanutils/commons-beanutils/1.9.2/commons-beanutils-1.9.2.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/mariadb/jdbc/mariadb-java-client/1.4.5/mariadb-java-client-1.4.5.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
+  <classpathentry kind="src" path="target/generated-sources/java" including="**/*.java"/>
+  <classpathentry kind="src" path="src/main/resources" excluding="**/*.java|**/application.yml|**/application.properties"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="var" path="M2_REPO/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/transaction/javax.transaction-api/1.2/javax.transaction-api-1.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/mail/javax.mail-api/1.5.5/javax.mail-api-1.5.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/activation/activation/1.1/activation-1.1.jar"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/boot/spring-boot-starter-web/1.3.5.RELEASE/spring-boot-starter-web-1.3.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/boot/spring-boot-starter/1.3.5.RELEASE/spring-boot-starter-1.3.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/boot/spring-boot/1.3.5.RELEASE/spring-boot-1.3.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-core/4.2.5.RELEASE/spring-core-4.2.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-context/4.2.5.RELEASE/spring-context-4.2.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-aop/4.2.5.RELEASE/spring-aop-4.2.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-beans/4.2.5.RELEASE/spring-beans-4.2.5.RELEASE.jar" sourcepath="M2_REPO/org/springframework/spring-beans/4.2.5.RELEASE/spring-beans-4.2.5.RELEASE-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-expression/4.2.5.RELEASE/spring-expression-4.2.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/boot/spring-boot-autoconfigure/1.3.5.RELEASE/spring-boot-autoconfigure-1.3.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/boot/spring-boot-starter-logging/1.3.5.RELEASE/spring-boot-starter-logging-1.3.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/ch/qos/logback/logback-classic/1.1.7/logback-classic-1.1.7.jar"/>
+  <classpathentry kind="var" path="M2_REPO/ch/qos/logback/logback-core/1.1.7/logback-core-1.1.7.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.7.21/slf4j-api-1.7.21.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/jcl-over-slf4j/1.7.21/jcl-over-slf4j-1.7.21.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/jul-to-slf4j/1.7.21/jul-to-slf4j-1.7.21.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/log4j-over-slf4j/1.7.21/log4j-over-slf4j-1.7.21.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/yaml/snakeyaml/1.16/snakeyaml-1.16.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/boot/spring-boot-starter-tomcat/1.3.5.RELEASE/spring-boot-starter-tomcat-1.3.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/embed/tomcat-embed-core/7.0.54/tomcat-embed-core-7.0.54.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/embed/tomcat-embed-el/7.0.54/tomcat-embed-el-7.0.54.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/embed/tomcat-embed-logging-juli/7.0.54/tomcat-embed-logging-juli-7.0.54.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/embed/tomcat-embed-websocket/7.0.54/tomcat-embed-websocket-7.0.54.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/boot/spring-boot-starter-validation/1.3.5.RELEASE/spring-boot-starter-validation-1.3.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate-validator/5.2.4.Final/hibernate-validator-5.2.4.Final.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/fasterxml/classmate/1.3.1/classmate-1.3.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-databind/2.6.6/jackson-databind-2.6.6.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-annotations/2.6.6/jackson-annotations-2.6.6.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-core/2.6.6/jackson-core-2.6.6.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-web/4.2.5.RELEASE/spring-web-4.2.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-webmvc/4.2.5.RELEASE/spring-webmvc-4.2.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/boot/spring-boot-starter-data-jpa/1.3.5.RELEASE/spring-boot-starter-data-jpa-1.3.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/boot/spring-boot-starter-aop/1.3.5.RELEASE/spring-boot-starter-aop-1.3.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/aspectj/aspectjweaver/1.8.9/aspectjweaver-1.8.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/boot/spring-boot-starter-jdbc/1.3.5.RELEASE/spring-boot-starter-jdbc-1.3.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-jdbc/7.0.54/tomcat-jdbc-7.0.54.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-juli/7.0.54/tomcat-juli-7.0.54.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-jdbc/4.2.5.RELEASE/spring-jdbc-4.2.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-tx/4.2.5.RELEASE/spring-tx-4.2.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate-entitymanager/5.1.0.Final/hibernate-entitymanager-5.1.0.Final.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate-core/5.1.0.Final/hibernate-core-5.1.0.Final.jar" sourcepath="M2_REPO/org/hibernate/hibernate-core/5.1.0.Final/hibernate-core-5.1.0.Final-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar" sourcepath="M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar"/>
+  <classpathentry kind="var" path="M2_REPO/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/geronimo/specs/geronimo-jta_1.1_spec/1.1.1/geronimo-jta_1.1_spec-1.1.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/jandex/2.0.0.Final/jandex-2.0.0.Final.jar"/>
+  <classpathentry kind="var" path="M2_REPO/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hibernate/common/hibernate-commons-annotations/5.0.1.Final/hibernate-commons-annotations-5.0.1.Final.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-jpa/1.9.4.RELEASE/spring-data-jpa-1.9.4.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-commons/1.11.4.RELEASE/spring-data-commons-1.11.4.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-orm/4.2.5.RELEASE/spring-orm-4.2.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-aspects/4.2.5.RELEASE/spring-aspects-4.2.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate-infinispan/5.1.0.Final/hibernate-infinispan-5.1.0.Final.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/infinispan/infinispan-core/8.1.0.Final/infinispan-core-8.1.0.Final.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/infinispan/infinispan-commons/8.1.0.Final/infinispan-commons-8.1.0.Final.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jgroups/jgroups/3.6.4.Final/jgroups-3.6.4.Final.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/spec/javax/transaction/jboss-transaction-api_1.1_spec/1.0.1.Final/jboss-transaction-api_1.1_spec-1.0.1.Final.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/marshalling/jboss-marshalling-osgi/1.4.10.Final/jboss-marshalling-osgi-1.4.10.Final.jar"/>
+  <classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/zkoss/zk/zkbind/8.0.1.1/zkbind-8.0.1.1.jar" sourcepath="M2_REPO/org/zkoss/zk/zkbind/8.0.1.1/zkbind-8.0.1.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/zkoss/zk/zul/8.0.1.1/zul-8.0.1.1.jar" sourcepath="M2_REPO/org/zkoss/zk/zul/8.0.1.1/zul-8.0.1.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/zkoss/zk/zk/8.0.1.1/zk-8.0.1.1.jar" sourcepath="M2_REPO/org/zkoss/zk/zk/8.0.1.1/zk-8.0.1.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/zkoss/common/zweb/8.0.1.1/zweb-8.0.1.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/zkoss/common/zcommon/8.0.1.1/zcommon-8.0.1.1.jar" sourcepath="M2_REPO/org/zkoss/common/zcommon/8.0.1.1/zcommon-8.0.1.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-fileupload/commons-fileupload/1.2.2/commons-fileupload-1.2.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/zkoss/common/zel/8.0.1.1/zel-8.0.1.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-jdk14/1.7.21/slf4j-jdk14-1.7.21.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.5/commons-codec-1.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/zkoss/zk/zkplus/8.0.1.1/zkplus-8.0.1.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/zkoss/zk/zhtml/8.0.1.1/zhtml-8.0.1.1.jar" sourcepath="M2_REPO/org/zkoss/zk/zhtml/8.0.1.1/zhtml-8.0.1.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-io/commons-io/2.4/commons-io-2.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/zkoss/zsoup/1.8.2.5/zsoup-1.8.2.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/querydsl/querydsl-apt/4.1.0/querydsl-apt-4.1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/querydsl/querydsl-codegen/4.1.0/querydsl-codegen-4.1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/querydsl/querydsl-core/4.1.0/querydsl-core-4.1.0.jar" sourcepath="M2_REPO/com/querydsl/querydsl-core/4.1.0/querydsl-core-4.1.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/19.0/guava-19.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mysema/commons/mysema-commons-lang/0.2.4/mysema-commons-lang-0.2.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/infradna/tool/bridge-method-annotation/1.13/bridge-method-annotation-1.13.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/mysema/codegen/codegen/0.6.8/codegen-0.6.8.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/jdt/core/compiler/ecj/4.3.1/ecj-4.3.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/reflections/reflections/0.9.9/reflections-0.9.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/code/findbugs/annotations/2.0.1/annotations-2.0.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/querydsl/querydsl-jpa/4.1.0/querydsl-jpa-4.1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-log4j12/1.7.21/slf4j-log4j12-1.7.21.jar"/>
+  <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.17/log4j-1.2.17.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jasypt/jasypt/1.9.2/jasypt-1.9.2.jar" sourcepath="M2_REPO/org/jasypt/jasypt/1.9.2/jasypt-1.9.2-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/shiro/shiro-core/1.2.4/shiro-core-1.2.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/mariadb/jdbc/mariadb-java-client/1.4.5/mariadb-java-client-1.4.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/zkoss/zkforge/ckez/3.6.0.0/ckez-3.6.0.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/sun/mail/javax.mail/1.5.2/javax.mail-1.5.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/poi/poi/3.9/poi-3.9.jar" sourcepath="M2_REPO/org/apache/poi/poi/3.9/poi-3.9-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/poi/poi-ooxml/3.9/poi-ooxml-3.9.jar" sourcepath="M2_REPO/org/apache/poi/poi-ooxml/3.9/poi-ooxml-3.9-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/poi/poi-ooxml-schemas/3.9/poi-ooxml-schemas-3.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/xmlbeans/xmlbeans/2.3.0/xmlbeans-2.3.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/stax/stax-api/1.0.1/stax-api-1.0.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/github/scribejava/scribejava-core/2.5.2/scribejava-core-2.5.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/github/scribejava/scribejava-apis/2.5.2/scribejava-apis-2.5.2.jar"/>
 </classpath>

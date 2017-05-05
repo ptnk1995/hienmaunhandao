@@ -224,16 +224,16 @@
 				<executions>
 					<execution>
 						<id>dependency-convergence</id>
-                    <phase>install</phase>
-                    <goals>
-                        <goal>enforce</goal>
-                    </goals>
-                    <configuration>
-                        <rules>
-                            <DependencyConvergence />
-                        </rules>
-                        <fail>true</fail>
-                    </configuration>
+						<phase>install</phase>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<DependencyConvergence />
+							</rules>
+							<fail>true</fail>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
