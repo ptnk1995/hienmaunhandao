@@ -1,0 +1,38 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk">
+<zscript><![CDATA[
+	import java.awt.*;
+	import java.awt.image.*;
+	import java.awt.geom.*;
+	BufferedImage imagevar2 = new BufferedImage(50, 50, BufferedImage.TYPE_INT_ARGB);
+	if(nhanVien == null)
+		Executions.sendRedirect("/c/signin");
+]]></zscript>
+
+<n:section class="page_head">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="page_title">
+						<n:h2>Người dùng</n:h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</n:section>
+	<n:section class="content blog" zk:if="${nhanVien != null}">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vm') @init('vn.cal.service.NhanVienService')">
+					<zscript><![CDATA[
+ 			 				vm.getArg().put("pagesize",6);
+ 						]]></zscript>
+					<include src="/frontend/listnguoidung.zul" />
+					
+				</div>
+				<include src="/frontend/layout/right-menu.zul" />
+			</div>
+		</div>
+		
+	</n:section>
+</zk>

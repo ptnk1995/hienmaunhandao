@@ -1,0 +1,113 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk">
+	<n:section class="page_head">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="page_title">
+						<n:h2>Thông tin cần biết</n:h2>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</n:section>
+	<n:section class="content service">
+		<div class="container">
+		 	<div class="row sub_content">
+                <div class="col-md-12 col-lg-12">
+                    <div class="dividerHeading">
+                        <n:h4><n:span>Tham gia thành viên</n:span></n:h4>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="serviceBox_4">
+                        <div class="service-icon">
+                            <n:i class="fa fa-signal"></n:i>
+                        </div>
+                        <div class="service-content">
+                            <n:h3>Đăng ký</n:h3>
+                            <n:p>Khi muốn hiến máu tình nguyện, bạn hãy chọn chức năng "Form đăng ký" trên menu, cập nhập thông tin theo yêu cầu.
+                            Bạn có thể lựa chọn chương trình mình muốn tham gia. </n:p>
+                        </div>
+               		</div>
+            	</div>
+            	<div class="col-sm-4">
+                    <div class="serviceBox_4">
+                        <div class="service-icon">
+                            <n:i class="fa fa-cogs"></n:i>
+                        </div>
+                        <div class="service-content">
+                            <n:h3>Đề nghị</n:h3>
+                            <n:p>Bạn có thể gửi lời đề nghị cho những người tình nguyện trong danh sách. Và đợi tin từ họ, hệ thống sẽ gửi mail thông báo cho bạn trạng thái, hoặc bạn có thể tự động liên hệ.</n:p>
+                        </div>
+               		</div>
+            	</div>
+            	<div class="col-sm-4">
+                    <div class="serviceBox_4">
+                        <div class="service-icon">
+                            <n:i class="fa fa-users"></n:i>
+                        </div>
+                        <div class="service-content">
+                            <n:h3>Đăng bài</n:h3>
+                            <n:p>Hệ thống cho phép bạn đăng thông tin lên trang chủ, khi bạn chọn nhóm máu hệ thống sẽ cung cấp cho bạn 
+                            những người đang sẵn sàng giúp đỡ. Người khác có thể đưa ra bình luận để hỗ trợ thông tin.
+                           </n:p>
+                        </div>
+               		</div>
+            	</div>
+            </div>
+			<div class="row sub_content">
+				<div class="col-md-12 col-lg-12">
+					<div class="dividerHeading">
+						<n:h4><n:span>Quy trình hiến máu</n:span></n:h4>
+					</div>
+				</div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="serviceBox_2 red">
+                        <div class="service-icon">
+                            <n:i class="fa fa-globe"></n:i>
+                        </div>
+                        <div class="service-content">
+                            <n:h3>Cung cấp thông tin vào đơn hiến máu</n:h3>
+                            <n:p> Người hiến máu xuất trình giấy tờ tùy thân và nhận phiếu đăng ký, sau đó hoàn thành thông tin theo hướng dẫn.</n:p>                          
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="serviceBox_2 red">
+                        <div class="service-icon">
+                            <n:i class="fa fa-user-md"></n:i>
+                        </div>
+                        <div class="service-content">
+                            <n:h3> Khám sức khỏe, tư vấn và xét nghiệm máu</n:h3>
+                            <n:p>Các Bác sĩ sẽ tư vấn và kiểm tra sức khỏe của các bạn, giải đáp những băn khoăn, lo lắng của về việc hiến máu.
+                            Bạn sẽ được làm các xét nghiệm kiểm tra trước hiến máu, bao gồm xét nghiệm huyết sắc tố và virut viêm gan B.</n:p>                          
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="serviceBox_2 red">
+                        <div class="service-icon">
+                            <n:i class="fa fa-rocket"></n:i>
+                        </div>
+                        <div class="service-content">
+                            <n:h3>Hiến máu</n:h3>
+                            <n:p>Mỗi người sẽ dành trung bình 5 phút cho việc hiến máu với lượng máu hiến mỗi lần là 250, 350 hoặc 450ml.</n:p>                          
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="serviceBox_2 red">
+                        <div class="service-icon">
+                            <n:i class="fa fa-twitter"></n:i>
+                        </div>
+                        <div class="service-content">
+                            <n:h3>Nghỉ và nhận giấy chứng nhận</n:h3>
+                            <n:p>Sau hiến máu, bạn sẽ phải nghỉ tại chỗ ít nhất 10 phút, bạn sẽ được phục vụ ăn nhẹ và được khuyến cáo uống nhiều nước sau khi hiến máu. </n:p>                          
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</n:section>
+</zk>

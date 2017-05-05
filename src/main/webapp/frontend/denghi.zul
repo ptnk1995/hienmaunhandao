@@ -1,0 +1,250 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" xmlns:w="client">
+	<div class="col-lg-14 col-md-14 col-sm-14">
+		<div class="dividerHeading">
+			<n:h4>
+				<n:span>Đề nghị đã gửi</n:span>
+			</n:h4>
+		</div>
+	</div>
+	<div children="@load(vm2.listDeNghiGui)">
+		<template name="children" var="each">
+		<div class="col-lg-14">
+			<n:div class="panel-group accordion" id="accordion">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<n:h4 class="panel-title">
+							<n:a data-toggle="collapse"
+								data-parent="#accordion" href="#coll${each.id}">
+								
+								Bạn đã đề nghị
+								<n:strong>
+									${each.nguoiNhan.hoVaTen }
+								</n:strong>
+								vào
+								<n:strong>
+									<label value="${each.ngayTao}" />
+								</n:strong>
+							</n:a>
+						</n:h4>
+					</div>
+					<n:div id="coll${each.id}"
+						class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="col-lg-6 col-sm-6">
+								<div
+									class="alert alert-success alert-dismissable">
+									<n:strong class="icon-profile">
+										<n:i
+											class="fa fa-book margin-r-5">
+										</n:i>
+										Người nhận:
+									</n:strong>
+									${each.nguoiNhan.hoVaTen}
+									<n:br></n:br>
+									<n:strong class="icon-profile">
+										<n:i
+											class="fa fa-book margin-r-5">
+										</n:i>
+										Email:
+									</n:strong>
+									${each.nguoiNhan.email }
+									<n:br></n:br>
+									<n:strong class="icon-profile">
+										<n:i
+											class="fa fa-book margin-r-5">
+										</n:i>
+										Số điện thoại:
+									</n:strong>
+									${each.nguoiNhan.soDienThoai }
+									<n:br></n:br>
+									<n:strong class="icon-profile">
+										<n:i
+											class="fa fa-book margin-r-5">
+										</n:i>
+										Loại máu:
+									</n:strong>
+									${each.loaiMau.tenLoai }
+									<n:br></n:br>
+									<n:strong class="icon-profile">
+										<n:i
+											class="fa fa-book margin-r-5">
+										</n:i>
+										Nhóm máu:
+									</n:strong>
+									${each.nhomMau.tenNhom }
+								</div>
+							</div>
+							<div class="col-lg-2 col-sm-6">
+								<div
+									class="alert alert-success alert-dismissable">
+									<n:strong class="icon-profile">
+										<n:i
+											class="fa fa-book margin-r-5">
+										</n:i>
+										Trạng thái
+									</n:strong>
+									<n:br></n:br>
+									<n:button class="${each.style}" disabled="disabled"
+										>
+										${each.trangThaiDeNghi}
+									</n:button>
+								</div>
+							</div>
+						</div>
+					</n:div>
+				</div>
+			</n:div>
+		</div>
+		</template>
+	</div>
+	<div class="col-lg-14 col-md-14 col-sm-14">
+		<div class="dividerHeading">
+			<n:h4>
+				<n:span>Đề nghị đã nhận</n:span>
+			</n:h4>
+		</div>
+	</div>
+	
+	<div children="@load(vm2.listDeNghiNhan)">
+		<template name="children" var="each">
+			<div class="col-lg-14">
+				<n:div class="panel-group accordion"
+					id="accordion">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<n:h4 class="panel-title">
+								<n:a data-toggle="collapse"
+									data-parent="#accordion" href="#coll${each.id}">
+									<n:strong>
+										${each.nguoiGui.hoVaTen}
+									</n:strong>
+									đã gửi đề nghị cho bạn vào
+									<n:strong>
+										<label
+											value="@load(each.ngayTao) @converter('formatedDate',format='dd/MM/yyyy')" />
+									</n:strong>
+								</n:a>
+							</n:h4>
+						</div>
+						<n:div id="coll${each.id}"
+							class="panel-collapse collapse">
+							<div class="panel-body">
+								<div class="col-lg-6 col-sm-6">
+									<div
+										class="alert alert-success alert-dismissable">
+										<n:strong
+											class="icon-profile">
+											<n:i
+												class="fa fa-book margin-r-5">
+											</n:i>
+											Người gửi:
+										</n:strong>
+										${each.nguoiGui.hoVaTen}
+										<n:br></n:br>
+										<n:strong
+											class="icon-profile">
+											<n:i
+												class="fa fa-book margin-r-5">
+											</n:i>
+											Email:
+										</n:strong>
+										${each.nguoiGui.email }
+										<n:br></n:br>
+										<n:strong
+											class="icon-profile">
+											<n:i
+												class="fa fa-book margin-r-5">
+											</n:i>
+											Số điện thoại:
+										</n:strong>
+										${each.nguoiGui.soDienThoai
+										}
+										<n:br></n:br>
+										<n:strong
+											class="icon-profile">
+											<n:i
+												class="fa fa-book margin-r-5">
+											</n:i>
+											Loại máu:
+										</n:strong>
+										${each.loaiMau.tenLoai }
+										<n:br></n:br>
+										<n:strong
+											class="icon-profile">
+											<n:i
+												class="fa fa-book margin-r-5">
+											</n:i>
+											Nhóm máu:
+										</n:strong>
+										${each.nhomMau.tenNhom }
+									</div>
+								</div>
+								<div class="col-lg-2 col-sm-6">
+									<div
+										class="alert alert-success alert-dismissable">
+										<n:strong
+											class="icon-profile">
+											<n:i
+												class="fa fa-book margin-r-5">
+											</n:i>
+											Trạng thái
+										</n:strong>
+										<n:br></n:br>
+										<x:a data-toggle="modal"
+											data-target="#myModal" zk:if="${each.trangThaiDeNghi ne 'rejected' and(each.trangThaiDeNghi ne 'accept')}"><label zclass="@load(each.style)"
+											value="@bind(each.trangThaiDeNghi)"
+											 /></x:a>
+										<label zclass="@load(each.style)" zk:if="${each.trangThaiDeNghi ne 'waiting'}"
+											value="@bind(each.trangThaiDeNghi)"
+											 />
+									</div>
+									
+								</div>
+							</div>
+							<n:div class="modal fade" id="myModal"
+								role="dialog">
+								<div class="modal-dialog"
+									apply="org.zkoss.bind.BindComposer"
+									viewModel="@id('item') @init(each)">
+									<div class="modal-content" style="width: 400px; margin: 0 auto; text-align: center;">
+										<div class="modal-header">
+											<n:button type="button"
+												class="close" data-dismiss="modal">
+												<n:i
+													class="fa fa-remove">
+												</n:i>
+											</n:button>
+											<n:h4
+												class="modal-title">
+												Cập nhập trạng thái
+											</n:h4>
+										</div>
+										<div class="modal-body">
+											<x:button
+												class="btn btn-warning" style="margin-right:10px;"
+												onClick="@command('saveTuChoi', list=item, attr='trangThaiDeNghi')">
+												<n:i
+													class="fa fa-remove">
+												</n:i>
+												&#160;&#160;Từ chối
+											</x:button>
+											<x:button
+												style="margin-right: 10px;" class="btn btn-success "
+												onClick="@command('saveChapNhan', list=item, attr='trangThaiDeNghi')">
+												<n:i
+													class="fa fa-check">
+												</n:i>
+												&#160;&#160;Chấp
+												nhận
+											</x:button>
+										</div>
+									</div>
+								</div>
+							</n:div>
+						</n:div>
+					</div>
+				</n:div>
+			</div>
+		</template>
+	</div>
+</zk>

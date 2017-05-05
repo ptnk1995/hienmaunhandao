@@ -1,0 +1,106 @@
+<?page title="Quản lý thông báo" contentType="text/html;charset=UTF-8"?>
+<div xmlns:zk="zk" xmlns:n="native" xmlns:x="xhtml" apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('vm') @init('vn.cal.service.ThongKeNguoiThamGia')"
+	validationMessages="@id('vmsgs')">
+	<zscript><![CDATA[
+		self.page.title= "Thống kê";
+		//System.out.println("thongke: " + entry.quyen.get("thongke_thong-ke-ket-qua-phat-hien-xu-ly-dang-ky-thuong-tru"));
+	]]></zscript>
+	<n:section>
+	<div class="bread-div bread-tk">			
+		<a href="/thongke">&lt; Thống kê</a>
+	</div>	
+	</n:section>
+	<n:section class="content">	
+		<n:div class="row">
+	    	<n:div class="col-md-12">
+	    		<div class="thong-ke-detail">
+	    			<div class="thong-ke-detail-header">	    				
+	    				Kết quả thống kê số lượng người tham gia và đơn đề nghị
+	    			</div>
+	    			<div class="thong-ke-detail-content thong-ke-detail-content2">
+	    				<div class="row">
+	    					<div class="col-lg-10 col-md-9">
+	    						<div class="row">
+			    					<div class="col-lg-4 col-md-6">
+			    						<div class="form-group form-group-tk">
+											<x:label class="col-md-4 col-sm-3">Từ ngày:</x:label>
+											<div class="col-md-8 col-sm-9">													
+												<datebox width="100%" placeholder="dd/MM/yyyy"
+														format="dd/MM/yyyy" value="@bind(vm.tuNgayTK)" readonly="false"
+														class="mis-datebox-inner" />
+											</div>
+										</div>
+			    					</div>
+			    					<div class="col-lg-4 col-md-6">
+			    						<div class="form-group form-group-tk">
+											<x:label class="col-md-4 col-sm-3">Đến ngày:</x:label>
+											<div class="col-md-8 col-sm-9">													
+												<datebox width="100%" placeholder="dd/MM/yyyy"
+														format="dd/MM/yyyy" value="@bind(vm.denNgayTK)" readonly="false"
+														class="mis-datebox-inner" />
+												<label class="error" value="@load(vmsgs['lblErrDenNgayTK'])" />
+											</div>
+										</div>
+			    					</div>
+	    						</div>
+	    					</div>
+	    					<div class="col-lg-2 col-md-3 btn-thong-ke-ket-qua">
+	    						<x:a class="btn btn-success" style="margin-top:40px"
+									onClick="@command('thongKeKetQua')">
+									<n:i class="fa fa-search"></n:i>
+									Thống kê
+								</x:a>
+	    					</div>	    					
+	    				</div>
+	    				<div style="padding:5px 20px 0px 20px">
+	    					<div style="overflow:auto;">
+		    					<div class="thong-ke-table" visible="@load(vm.thongKe)">
+	    				<n:table>
+	    					<n:tr>
+	    						<n:td class="center bold" style="width:50px;">TT</n:td>
+	    						<n:td class="center bold" colspan="2">CÁC TIÊU CHÍ THỐNG KÊ</n:td>
+	    						<n:td class="center bold" style="width:80px;">SỐ LIỆU</n:td>
+	    					</n:tr>	    	
+	    					<n:tr>
+	    						<n:td class="center" rowspan="3">1</n:td>
+	    						<n:td class="center bold" rowspan="3">Người tham gia</n:td>
+	    						<n:td>Biết nhóm máu</n:td>
+	    						<n:td class="center"><label value="@load(vm.soLieu.soLieuBietNhomMau)"/></n:td>
+	    					</n:tr>
+	    					<n:tr>
+	    						<n:td>Không biết nhóm máu</n:td>
+	    						<n:td class="center"><label value="@load(vm.soLieu.soLieuKhongBietNhomMau)"/></n:td>
+	    					</n:tr>
+	    					<n:tr>
+	    						<n:td>Tổng cộng</n:td>
+	    						<n:td class="center"><label value="@load(vm.soLieu.soLieuDKNhieuLan)"/></n:td>
+	    					</n:tr>
+	    					<n:tr>
+	    						<n:td class="center" rowspan="4">2</n:td>
+	    						<n:td class="center bold" rowspan="4">Trạng thái đề nghị</n:td>
+	    						<n:td>Trạng thái chấp nhận</n:td>
+	    						<n:td class="center"><label value="@load(vm.soLieu.soLieuDNChapNhan)"/></n:td>
+	    					</n:tr>
+	    					<n:tr>
+	    						<n:td>Trạng thái hủy bỏ</n:td>
+	    						<n:td class="center"><label value="@load(vm.soLieu.soLieuDNHuy)"/></n:td>
+	    					</n:tr>
+	    					<n:tr>
+	    						<n:td>Trạng thái đợi</n:td>
+	    						<n:td class="center"><label value="@load(vm.soLieu.soLieuDNDoi)"/></n:td>
+	    					</n:tr>
+	    					<n:tr>
+	    						<n:td>Tổng cộng</n:td>
+	    						<n:td class="center"><label value="@load(vm.soLieu.soLieuDNAll)"/></n:td>
+	    					</n:tr>
+	    				</n:table>
+	    			</div>
+		    				</div>
+	    				</div>
+	    			</div>
+	    		</div>	    		   		
+	    	</n:div>
+	    </n:div>
+	</n:section>
+</div>

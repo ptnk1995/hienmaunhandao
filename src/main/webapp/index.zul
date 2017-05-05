@@ -1,0 +1,8 @@
+<zk>
+
+	<zscript><![CDATA[
+		//desktop.setCurrentDirectory("/WEB-INF/zul");
+		Executions.forward("/frontend/index_2.zul?resource=index&file=/frontend/layout/index.zul");
+	]]></zscript>
+
+</zk>

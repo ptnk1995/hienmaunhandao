@@ -1,0 +1,418 @@
+<!-- Bootstrap 3.3.6 -->
+<?style href="/backend/admin-lte/bootstrap/css/bootstrap.css" type="text/css" ?>
+<!-- Font Awesome -->
+<?style href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css" ?>
+<!-- Ionicons -->
+<?style href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" type="text/css" ?>
+<!-- jvectormap -->
+<?style href="/backend/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.css" type="text/css" ?>
+<!-- Theme style -->
+<?style href="/backend/admin-lte/dist/css/AdminLTE.css" type="text/css" ?>
+<!-- Custom style zk -->
+<?style href="/backend/admin-lte/dist/css/custom.css" type="text/css" ?>
+<?link rel="stylesheet" type="text/css" href="/backend/admin-lte/dist/css/style.css"?>
+<!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+<?style href="/backend/admin-lte/dist/css/skins/_all-skins.min.css" type="text/css" ?>
+<!-- Toastr css -->
+<?style href="/backend/toastr/build/toastr.css" type="text/css" ?>
+<!-- Pace style -->
+<?style href="/backend/admin-lte/plugins/pace/pace.min.css" type="text/css" ?>
+
+<?page title="Quản lý đăng ký hiến máu" contentType="text/html;charset=UTF-8"?>
+<?meta http-equiv="X-UA-Compatible" content="IE=edge"?>
+<?meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"?>
+
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" >
+<!-- jQuery 2.2.0 -->
+<!-- <script type="text/javascript" src="/backend/admin-lte/plugins/jQuery/jQuery-2.2.0.min.js" defer="true"></script> -->
+<!-- 3.3.6 -->
+<script type="text/javascript" src="/backend/admin-lte/bootstrap/js/bootstrap.js" />
+<!-- FastClick -->
+<script type="text/javascript" src="/backend/admin-lte/plugins/fastclick/fastclick.js" />
+<!-- SlimScroll 1.3.0 -->
+<script type="text/javascript" src="/backend/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js" />
+<!-- AdminLTE for demo purposes -->
+<script type="text/javascript" src="/backend/admin-lte/dist/js/demo.js" />
+<!-- AdminLTE App -->
+<script type="text/javascript" src="/backend/admin-lte/dist/js/app.js" defer="true"/>
+<!-- Toastr js -->
+<script type="text/javascript" src="/backend/toastr/build/toastr.min.js" />
+<!-- PACE -->
+<script type="text/javascript" src="/backend/admin-lte/plugins/pace/pace.min.js" />
+<style>
+.user-image {
+  float: left;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-top: -2px;
+}
+@media (max-width: 767px) {
+  .navbar-nav > .user-menu .user-image {
+    float: none;
+    margin-right: 0;
+    margin-top: -8px;
+    line-height: 10px;
+  }
+}
+.user-header {
+  height: 175px;
+  padding: 10px;
+  text-align: center;
+}
+.user-header > img {
+  z-index: 5;
+  height: 90px;
+  width: 90px;
+  border: 3px solid;
+  border-color: transparent;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.user-header > p {
+  z-index: 5;
+  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 17px;
+  margin-top: 10px;
+}
+.user-header > p > small {
+  display: block;
+  font-size: 12px;
+}
+.user-body {
+  padding: 15px;
+  border-bottom: 1px solid #f4f4f4;
+  border-top: 1px solid #dddddd;
+}
+.user-body:before,
+.user-body:after {
+  content: " ";
+  display: table;
+}
+.user-body:after {
+  clear: both;
+}
+.user-body a {
+  color: #444 !important;
+}
+@media (max-width: 991px) {
+ .user-body a {
+    background: #fff !important;
+    color: #444 !important;
+  }
+}
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer {
+  background-color: #f9f9f9;
+  padding: 10px;
+}
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer:before,
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer:after {
+  content: " ";
+  display: table;
+}
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer:after {
+  clear: both;
+}
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-default {
+  color: #666666;
+}
+@media (max-width: 991px) {
+  .navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-default:hover {
+    background-color: #f9f9f9;
+  }
+}</style>
+	<div class="hold-transition skin-blue sidebar-mini">
+		<zscript><![CDATA[
+		                  
+			entry = new vn.cal.core.BaseObject();
+			String resource = execution.getParameter("resource");
+			String action = execution.getParameter("action");
+			String file = execution.getParameter("file");
+			String ctxPath = execution.getContextPath();
+			String serverName = execution.getServerName() + "";
+			String serverPort = execution.getServerPort() + "";
+			String urlImage = "http://" + serverName + ":" + serverPort + ctxPath;
+			nhanVien = entry.getNhanVien();
+			vaiTro = new vn.cal.core.CoreObject();
+			if(nhanVien.getEmail().isEmpty()){
+				System.out.print("nhanVien"+nhanVien.getEmail()+"  ff");
+				nhanVien = null;
+			}
+           	import java.awt.*;
+           	import java.awt.image.*;
+           	import java.awt.geom.*;
+           	if(nhanVien != null) {
+           		BufferedImage imagevar2 = new BufferedImage(10, 10, BufferedImage.TYPE_INT_ARGB);
+           	}
+           	else
+				Executions.sendRedirect("/c/signin");
+		]]></zscript>
+		<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vn.cal.core.BaseObject')" zk:if="${nhanVien != null}">
+		<div class="wrapper">
+			<n:header class="main-header">
+			    <!-- Logo -->
+			    <n:a href="${ctxPath}/cp" class="logo">
+			      	<!-- mini logo for sidebar mini 50x50 pixels -->
+			      	<n:span class="logo-mini"><n:b>QL</n:b>HM</n:span>
+			      	<!-- logo for regular state and mobile devices -->
+			      	<n:span class="logo-lg"><n:b>QL</n:b> HIẾN MÁU</n:span>
+			    </n:a>
+			
+			    <!-- Header Navbar: style can be found in header.less -->
+			    <n:nav class="navbar navbar-static-top">
+				    <!-- Sidebar toggle button-->
+				    <n:a href="javascript:void(0)" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+				    	<n:span class="sr-only">Toggle navigation</n:span>
+				    </n:a>
+			      	<!-- Navbar Right Menu -->
+			      	<n:div class="navbar-custom-menu">
+				        <n:ul class="nav navbar-nav">				          	
+				          	<!-- User Account: style can be found in dropdown.less -->
+				          	<div apply="org.zkoss.bind.BindComposer"
+										viewModel="@id('vm2') @init(nhanVien)">
+				          	<n:li class="dropdown user user-menu">
+					            <n:a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+					              	<image class="user-image"
+														content="@load(vm2.imageContent eq null ? imagevar2 : vm2.imageContent)">
+										</image> 
+					              	<n:span class="hidden-xs">${nhanVien.hoVaTen}</n:span>
+					            </n:a>
+				            	<n:ul class="dropdown-menu">
+				              		<!-- User image -->
+				              		<n:li class="user-header">
+				                		<image class="img-circle"
+														content="@load(vm2.imageContent eq null ? imagevar2 : vm2.imageContent)">
+										</image>
+				                		<n:p>${nhanVien.hoVaTen}<n:small>${nhanVien.email }</n:small></n:p>
+				              		</n:li>
+				              		
+				              		<!-- Menu Footer-->
+				              		<n:li class="user-footer">
+				                		<n:div class="pull-left">
+				                  			<a apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init(entry.nhanViens)"
+			                  					href="/nguoidung/sua/${nhanVien.id}" class="btn btn-success btn-flat">Thay đổi thông tin</a>
+			                			</n:div>
+			                			<n:div class="pull-right">
+			                  				<a apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init(entry.nhanViens)"
+			                  					onClick="@command('logout')" class="btn btn-success btn-flat">Đăng xuất</a>
+				                		</n:div>
+				              		</n:li>
+				            	</n:ul>
+				          	</n:li>
+				          	</div>
+				        </n:ul>
+			      	</n:div>
+				</n:nav>
+			</n:header>
+		  	<!-- Left side column. contains the logo and sidebar -->
+		  	<n:aside class="main-sidebar">
+		    	<!-- sidebar: style can be found in sidebar.less -->
+	    		<n:section class="sidebar">
+		      		<!-- Sidebar user panel -->
+			      	<n:div class="user-panel">
+			        	<n:div class="pull-left image">
+			          		<n:img src="${urlImage}/backend/admin-lte/dist/img/user1-128x128.png" class="img-circle" alt="User Image" />
+		        		</n:div>
+		        		<n:div class="pull-left info">
+					        <n:p>${nhanVien.hoVaTen}</n:p>
+			       		</n:div>
+			      	</n:div>			      
+			      	<!-- /.search form -->
+			      	<!-- sidebar menu: : style can be found in sidebar.less -->
+			      	<n:ul class="sidebar-menu">
+			      		<n:li  class="${resource eq 'login' ? 'treeview active' : 'treeview'}">
+				          	<n:a href="${ctxPath}/login">
+				          	</n:a>
+		        		</n:li>
+		        		<n:li
+			        		class="${resource eq 'nguoidung'  || resource eq 'vaitro' ? 'treeview active' : 'treeview'}">
+			        		<n:a href="javascript:void(0)">
+			        			<n:i class="fa fa-folder-open"></n:i>
+			        			<n:span>Quản lý người dùng</n:span>
+			        			<n:i
+			        				class="fa fa-angle-left pull-right">
+			        			</n:i>
+			        		</n:a>
+			        		<n:ul class="treeview-menu">
+			        			<n:li
+			        				class="${resource eq 'nguoidung' ? 'active' : ''}">
+			        				<n:a href="${ctxPath}/nguoidung">
+			        					<n:i class="fa fa-pencil"></n:i>
+			        					Thông tin người dùng
+			        				</n:a>
+			        			</n:li>
+			        			<n:li
+			        				class="${resource eq 'vaitro' ? 'active' : ''}">
+			        				<n:a href="${ctxPath}/vaitro">
+			        					<n:i class="fa fa-pencil"></n:i>
+			        					Vai trò người dùng
+			        				</n:a>
+			        			</n:li>
+			        		</n:ul>
+			        	</n:li>
+			        	<n:li
+			        		class="${resource eq 'dangky'  || resource eq 'denghi' || resource eq 'theodoi'? 'treeview active' : 'treeview'}">
+			        		<n:a href="javascript:void(0)">
+			        			<n:i class="fa fa-folder-open"></n:i>
+			        			<n:span>Quản lý dịch vụ</n:span>
+			        			<n:i
+			        				class="fa fa-angle-left pull-right">
+			        			</n:i>
+			        		</n:a>
+			        		<n:ul class="treeview-menu">
+			        			<n:li
+			        				class="${resource eq 'dangky' ? 'active' : ''}">
+			        				<n:a href="${ctxPath}/dangky">
+			        					<n:i class="fa fa-pencil"></n:i>
+			        					Quản lý đơn đăng ký
+			        				</n:a>
+			        			</n:li>
+			        			<n:li
+			        				class="${resource eq 'denghi' ? 'active' : ''}">
+			        				<n:a href="${ctxPath}/denghi">
+			        					<n:i class="fa fa-envelope"></n:i>
+			        					Quản lý đề nghị
+			        				</n:a>
+			        			</n:li>
+			        			<n:li
+			        				class="${resource eq 'denghi' ? 'active' : ''}">
+			        				<n:a href="${ctxPath}/denghi">
+			        					<n:i class="fa fa-building"></n:i>
+			        					Quản lý theo dõi
+			        				</n:a>
+			        			</n:li>
+			        		</n:ul>
+			        	</n:li>
+			        	<n:li  class="${resource eq 'loaimau'  || resource eq 'nhommau' || resource eq 'khomau'? 'treeview active' : 'treeview'}">
+					        <n:a href="javascript:void(0)">
+					        	<n:i class="fa fa-th-list"></n:i> <n:span>Quản lý máu</n:span> <n:i class="fa fa-angle-left pull-right"></n:i>
+					        </n:a>			          		
+			          		<n:ul class="treeview-menu">
+			            		<n:li class="${resource eq 'loaimau' ? 'active' : ''}">
+			            			<n:a href="${ctxPath}/loaimau"><n:i class="fa fa-building"></n:i>Loại máu
+			            			</n:a>
+			            		</n:li>
+			            		<n:li class="${resource eq 'nhommau' ? 'active' : ''}">
+			            			<n:a href="${ctxPath}/nhommau"><n:i class="fa fa-building"></n:i>Nhóm máu
+			            			</n:a>
+			            		</n:li>
+			            		<n:li class="${resource eq 'khomau' ? 'active' : ''}">
+			            			<n:a href="${ctxPath}/khomau"><n:i class="fa fa-building"></n:i>Kho máu
+			            			</n:a>
+			            		</n:li>	   		
+			          		</n:ul>
+		        		</n:li>
+		        		<n:li  class="${resource eq 'thanhpho'||resource eq 'quanhuyen'||resource eq 'baidang'||resource eq 'chuongtrinhhienmau'? 'treeview active' : 'treeview'}">
+					        <n:a href="javascript:void(0)">
+					        	<n:i class="fa fa-th"></n:i> <n:span>Quản lý thông tin</n:span> <n:i class="fa fa-angle-left pull-right"></n:i>
+					        </n:a>			          		
+			          		<n:ul class="treeview-menu">
+			            		<n:li class="${resource eq 'thanhpho' ? 'active' : ''}">
+			            			<n:a href="${ctxPath}/thanhpho"><n:i class="fa fa-building"></n:i>Thành phố
+			            			</n:a>
+			            		</n:li>
+			            		<n:li class="${resource eq 'quanhuyen' ? 'active' : ''}">
+			            			<n:a href="${ctxPath}/quanhuyen"><n:i class="fa fa-building"></n:i>Quận huyện
+			            			</n:a>
+			            		</n:li>
+			            		<n:li class="${resource eq 'baidang' ? 'active' : ''}">
+			            			<n:a href="${ctxPath}/baidang" style="display: inline;"><n:i class="fa fa-building"></n:i>Bài đăng
+			            				
+			            			</n:a>
+			            			<a href="/baidang/duyetbai" style="display: inline;" >
+			            					<label value="@bind(vm.count)" tooltip="title" style="background-color: red; color: #fff;	 padding: 1px 4px;" /></a>
+			            		</n:li>
+			            		<n:li class="${resource eq 'chuongtrinhhienmau' ? 'active' : ''}">
+			            			<n:a href="${ctxPath}/chuongtrinhhienmau"><n:i class="fa fa-building"></n:i>Chương trình hiến máu
+			            			</n:a>
+			            		</n:li>
+			            		<n:li class="${resource eq 'danhmuctintuc' ? 'active' : ''}">
+			            			<n:a href="${ctxPath}/danhmuctintuc"><n:i class="fa fa-building"></n:i>Danh mục tin tức
+			            			</n:a>
+			            		</n:li>
+			            		<n:li class="${resource eq 'tintuc' ? 'active' : ''}">
+			            			<n:a href="${ctxPath}/tintuc"><n:i class="fa fa-bullhorn"></n:i>Tin tức
+			            			</n:a>
+			            		</n:li>	            		
+			          		</n:ul>
+		        		</n:li>
+		        		<n:li
+			        		class="${resource eq 'thongke'? 'treeview active' : 'treeview'}">
+			        		<n:a href="javascript:void(0)">
+					        	<n:i class="fa fa-th"></n:i> <n:span>Thống kê</n:span> <n:i class="fa fa-angle-left pull-right"></n:i>
+					        </n:a>
+					        <n:ul class="treeview-menu">
+				        		<n:li class="${resource eq 'thongke' ? 'active' : ''}">
+				        			<n:a href="${ctxPath}/thongke"><n:i class="fa fa-building"></n:i>Thống kê
+				            			</n:a>
+				            	</n:li>
+			            	</n:ul>
+			        	</n:li>  
+		        		<n:li zk:if="${chuakhoa and chuakichhoat}" 
+		        			class="${resource eq 'donvi' || resource eq 'nguoidung' || resource eq 'vaitro' ? 'active' : ''}">
+					        <n:a href="javascript:void(0)">
+					        	<n:i class="fa fa-users"></n:i> <n:span>Người dùng</n:span> <n:i class="fa fa-angle-left pull-right"></n:i>
+					        </n:a>
+			          		<n:ul class="treeview-menu">
+			          			<n:li zk:if="${entry.quyen.nguoidung_lietke}" class="${resource eq 'donvi' ? 'active' : ''}">
+									<n:a href="${ctxPath}/cp/donvi"><n:i class="fa fa-gear"></n:i> Đơn vị</n:a>
+								</n:li>
+				            	<n:li zk:if="${entry.quyen.nguoidung_lietke}" class="${resource eq 'nguoidung' ? 'active' : ''}">
+									<n:a href="${ctxPath}/cp/nguoidung"><n:i class="fa fa-user"></n:i> Người dùng</n:a>
+								</n:li>
+								<n:li zk:if="${entry.quyen.vaitro_lietke}" class="${resource eq 'vaitro' ? 'active' : ''}">
+									<n:a href="${ctxPath}/cp/vaitro"><n:i class="fa fa-gear"></n:i> Vai trò</n:a>
+								</n:li>
+			          		</n:ul>
+		        		</n:li>
+		        		
+		        		
+		        		<n:li zk:if="${chuakhoa and chuakichhoat}"
+		        			class="${resource eq 'thongkebaiviettheochuyenmuc' || resource eq 'thongkebaiviettheotacgia' ? 'active' : ''}">
+					        <n:a href="javascript:void(0)">
+					        	<n:i class="fa fa-area-chart"></n:i> <n:span>Thống kê</n:span>
+					        </n:a>
+			          		<n:ul class="treeview-menu">
+			          		</n:ul>
+		        		</n:li>
+
+			      	</n:ul>
+			    </n:section>
+			    <!-- /.sidebar -->
+		  	</n:aside>
+		
+		 	<!-- Content Wrapper. Contains page content -->
+		  	<n:div class="content-wrapper">
+			    <include  instant="true" src="${execution.getParameter('file')}"></include>
+				<label if="${!coquyen and !dakhoa and dakichhoat}">Bạn không có quyền truy cập chức năng này!</label>
+				<label if="${dakhoa and dakichhoat}">Tài khoản của bạn đã bị khóa!</label>
+				<label if="${!dakhoa and !dakichhoat}">Tài khoản của bạn chưa được kích hoạt!</label>
+				<label if="${dakhoa and !dakichhoat}">Tài khoản của bạn đã bị khóa và chưa được kích hoạt!</label>
+		  	</n:div>
+		  	
+		  	<!-- <n:div class="content-wrapper">
+		  		<include instant="true" src="${execution.getParameter('file')}"></include>
+		  	</n:div> -->
+		  	<!-- /.content-wrapper -->
+		
+		  	<n:footer class="main-footer">
+		    	<n:div class="pull-right hidden-xs">
+		      		<n:b>Version</n:b> 1.0
+		    	</n:div>
+		    	<n:strong>Copyright 2016 <n:a href="javascript:void(0)">Trần Thị Lê Sa</n:a>.</n:strong> All rights reserved.
+		  	</n:footer>
+		  	
+		  	<!-- /.control-sidebar -->
+		  	<!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+		  	<n:div class="control-sidebar-bg"></n:div>
+		</div>
+		</div>
+	</div>
+	<n:script>
+		$(document).ajaxStart(function() { Pace.restart(); });
+	</n:script>
+	<popup id="title" width="200px">
+        <html><![CDATA[Bài đăng đang đợi duyệt]]></html>
+    </popup>
+</zk>

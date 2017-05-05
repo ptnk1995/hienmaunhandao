@@ -1,0 +1,2 @@
+<?component name="confirm-edit" inline="true" macroURI="confirm-edit.zul"?>
+<confirm-edit model="${arg.vm}" vmArgs="${arg.vmArgs}" save="Cập nhập trạng thái đề ghị" />

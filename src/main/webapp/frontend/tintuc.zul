@@ -1,0 +1,21 @@
+<zk xmlns:n="native" xmlns:x="xhtm*l" xmlns:zk="zk">
+	<div children="@load(vm2.targetQuery.fetch())">
+		<template name="children" var="each">
+			<div class="blogDetail col-sm-12">
+				<div class="blogTitle">
+					<a href="">
+					<n:h4>${each.tieuDe}...</n:h4>
+					</a>	
+					<n:span>
+						<n:i class="fa fa-calendar"></n:i>
+						<label value="@load(each.ngayTao) @converter('formatedDate',format='MMM d,yyyy')"/>
+					</n:span>
+					<a href="#">
+						<n:i class="fa fa-user"></n:i>
+						${each.nguoiTao.hoVaTen }
+					</a>
+				</div>
+			</div>
+		</template>
+	</div>
+</zk>

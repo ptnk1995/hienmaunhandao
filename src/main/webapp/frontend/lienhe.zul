@@ -1,0 +1,95 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk">
+
+	<n:section class="page_head">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="page_title">
+						<n:h2>Liên hệ</n:h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</n:section>
+	<n:section class="contact_3">
+        <div class="maps">
+            <x:iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.0572827125543!2d108.1569943142964!3d16.06251698888508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa691cb5163d76dae!2zxJDhuqFpIEjhu41jIFPGsCBQaOG6oW0gxJDDoCBO4bq1bmc!5e0!3m2!1sen!2s!4v1489485240287" frameborder="0" style="border:0" width="100%" height="360px"></x:iframe>
+        </div>
+        <div class="container">
+            <div class="row sub_content">
+            	<div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                    <div class="dividerHeading text-center">
+                        <n:h4><span>Hiến máu là cứu người cứu mình</span></n:h4>
+                    </div>
+                    <n:p class="lead">Để đảm bảo an toàn truyền máu, cần tối thiểu 2% dân số đi hiến máu. Tuy nhiên hiện nay ở nước ta tỷ lệ này mới chỉ đạt dưới 1%. Lực lượng hiến máu chính hiện nay vẫn là học sinh, sinh viên. Vì thế, Tết và hè thường là thời điểm thiếu máu trầm trọng- lượng máu thường chỉ đáp ứng 40-45% nhu cầu.</n:p>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                <div apply="org.zkoss.bind.BindComposer" validationMessages="@id('vmsgs')" viewModel="@id('vm') @init('vn.cal.model.PhanHoi')">
+                	<n:form id="contactForm" action="" novalidate="novalidate">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-lg-4 ">
+                                    <label>Họ Tên (*)</label>
+                                    <n:br />
+                                   	<textbox class="form-control" maxlength="100"
+										value="@bind(vm.hoTen) @save(vm.tieuDe, before={'savePhanHoi'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+									<label class="error" value="@load(vmsgs[self.previousSibling])" />
+                                </div>
+                                <div class="col-lg-4 ">
+                                    <label>Email (*)</label>
+                                    <n:br />
+                                   <textbox class="form-control" maxlength="100"
+										value="@bind(vm.email) @save(vm.tieuDe, before={'savePhanHoi'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+									<label class="error" value="@load(vmsgs[self.previousSibling])" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Tiêu đề (*)</label>
+                                    <n:br />
+                                    <textbox class="form-control" maxlength="100"
+										value="@bind(vm.tieuDe) @save(vm.tieuDe, before={'savePhanHoi'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+									<label class="error" value="@load(vmsgs[self.previousSibling])" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label>Nội dung (*)</label>
+                                    <n:br />
+                                    <textbox class="form-control" name="message" rows="10" cols="50" maxlength="5000" 
+                                    value="@bind(vm.noiDung) @save(vm.noiDung, before={'savePhanHoi'}) @validator('vn.cal.core.BaseValid', constraint='no empty')"/>
+                                    <label class="error" value="@load(vmsgs[self.previousSibling])" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <x:button style="margin-right: 10px;" class="btn btn-default pull-right"
+									onClick="@command('savePhanHoi', list=vm)">
+									&#160;&#160;Gửi liên hệ
+								</x:button>
+                            </div>
+                        </div>
+                    </n:form>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="sidebar">
+                        <div class="widget_info">
+                            <div class="dividerHeading">
+                                <n:h4><n:span>Thông tin liên hệ</n:span></n:h4>
+                            </div>
+                            <n:p>Chúng tôi rất cảm ơn nếu bạn cung cấp thông tin phản hồi về dịch vụ đang sử dụng. Chúng tôi sẽ trả lời đáp ứng những điều bạn cần một cách nhanh nhất.</n:p>
+                            <n:ul class="widget_info_contact clearfix">
+                                <n:li class="col-sm-4"><n:i class="fa fa-map-marker"></n:i><n:strong>Địa chỉ</n:strong> <n:p> : 549 Tôn Đức Thắng</n:p></n:li>
+                                <n:li class="col-sm-4"><n:i class="fa fa-envelope"></n:i> <n:strong>Email</n:strong><n:p> <a href="#"> hienmaunhandao@gmail.com</a></n:p> <n:p> <a href="#"> tranlesa22@gmail.com</a></n:p></n:li>
+                                <n:li class="col-sm-4"><n:i class="fa fa-phone"></n:i> <n:strong>Điện thoại</n:strong> <n:p> : ( 0511) 3841 323</n:p><n:p>: (+84) 016.851.136.44</n:p></n:li>
+                            </n:ul>
+                        </div>
+                   	</div>
+                </div>
+            </div>
+        </div>
+    </n:section>
+</zk>

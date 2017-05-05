@@ -1,0 +1,109 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" xmlns:w="client">
+	<div children="@load(vm2.listDangKy)">
+	<template name="children" var="each">
+		<div class="col-lg-14">
+			<n:div class="panel-group accordion" id="accordion">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<n:h4 class="panel-title">
+							<n:a data-toggle="collapse"
+								data-parent="#accordion" href="#collapse${each.id}">
+								<n:strong>${each.hoTen }</n:strong>
+								đã đăng ký vào
+								<n:strong>
+									<label value="${each.ngayTao}" />
+								</n:strong>
+							</n:a>
+						</n:h4>
+					</div>
+					<n:div id="collapse${each.id}"
+						class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="col-lg-4 col-sm-4">
+								<div
+									class="alert alert-success alert-dismissable">
+									<n:strong class="icon-profile">
+										<n:i
+											class="fa fa-book margin-r-5">
+										</n:i>
+										Email:
+									</n:strong>
+									${each.email }
+									<n:br></n:br>
+									<n:strong class="icon-profile">
+										<n:i
+											class="fa fa-book margin-r-5">
+										</n:i>
+										Số điện thoại:
+									</n:strong>
+									${each.soDienThoai }
+									<n:br></n:br>
+									<n:strong class="icon-profile">
+										<n:i
+											class="fa fa-book margin-r-5">
+										</n:i>
+										Nhóm máu:
+									</n:strong>
+									${each.nhomMau.tenNhom }
+									<n:br></n:br>
+									<n:strong class="icon-profile">
+										<n:i
+											class="fa fa-book margin-r-5">
+										</n:i>
+										Số lần hiến máu:
+									</n:strong>
+									${each.soLanHienTruoc }
+								</div>
+							</div>
+							<div class="col-lg-6 col-sm-6">
+								<div
+									class="alert alert-success alert-dismissable">
+									<n:strong class="icon-profile">
+										<n:i
+											class="fa fa-book margin-r-5">
+										</n:i>
+										Thời gian vừa hiến:
+									</n:strong>
+									${each.thoiGianVuaHien }
+									<n:br></n:br>
+									<n:strong class="icon-profile">
+										<n:i
+											class="fa fa-book margin-r-5">
+										</n:i>
+										Thời gian sắp hiến:
+									</n:strong>
+									${each.thoiGianSapHien }
+									<n:br></n:br>
+									<n:strong class="icon-profile">
+										<n:i
+											class="fa fa-book margin-r-5">
+										</n:i>
+										Chương trình hiến máu:
+									</n:strong>
+									${each.chuongTrinhHienMau.tenChuongTrinh}
+								</div>
+							</div>
+							<div class="col-lg-2 col-sm-2">
+								<div
+									class="alert alert-success alert-dismissable">
+									<n:strong class="icon-profile">
+										<n:i
+											class="fa fa-book margin-r-5">
+										</n:i>
+										Trạng thái
+									</n:strong>
+									<n:br></n:br>
+									<n:button class="${each.style}"
+										disable="true">
+										<label value="@load(each.trangThaiDangKy)"/>
+									</n:button>
+								</div>
+							</div>
+						</div>
+					</n:div>
+				</div>
+			</n:div>
+		</div>
+		</template>
+	</div>
+</zk>

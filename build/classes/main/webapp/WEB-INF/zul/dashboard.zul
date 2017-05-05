@@ -1,0 +1,24 @@
+<zk xmlns:zk="zk" xmlns:n="native" xmlns:x="xhtml">
+		<div class="page-title">
+			<div class="title_left">
+				<n:h3>Plain Page</n:h3>
+			</div>
+			<!-- <div class="title_right">
+				<div
+					class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+					<div class="input-group">
+						<n:input type="text" class="form-control"
+							placeholder="Search for..." />
+						<n:span class="input-group-btn">
+							<n:button class="btn btn-default"
+								type="button">
+								Go!
+							</n:button>
+						</n:span>
+					</div>
+				</div>
+			</div> -->
+		</div>
+		<div class="clearfix"></div>
+		<div class="row"></div>
+</zk>

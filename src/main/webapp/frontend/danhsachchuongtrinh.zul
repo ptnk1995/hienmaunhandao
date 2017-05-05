@@ -1,0 +1,74 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk">
+<div apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vm') @init('vn.cal.service.ChuongTrinhHienMauService')">
+	<zscript>
+		context = Executions.getCurrent().getContextPath();
+	</zscript>
+	
+	<n:section class="page_head">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="col-sm-6">
+						<div class="page_title">
+							<n:h2>Chương trình hiện có</n:h2>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="site-search-area">
+							<n:form method="get" id="site-searchform"
+								action="#">
+								<div>
+									<textbox class="input-text s" value="@bind(vm.arg.tukhoa)" onOK="@command('cmd', notify=vm, attr='*')"
+										placeholder="Nhập từ khóa..." />
+									<button class="searchsubmit" onClick="@command('cmd', notify=vm, attr='*')">Search</button>
+								</div>
+							</n:form>
+						</div><!-- end site search -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</n:section>
+	<n:section class="content blog masonry_blog">
+        <div class="container">
+         <zscript><![CDATA[
+  			 vm.getArg().put("pagesize",6);
+  			]]></zscript>
+            <div class="mixed-container masonry_wrapper_blog row wow fadeInUp" children="@load(vm.page(vm.targetQuery).fetch())">
+	             <template name="children" var="each">
+		            <div class="col-sm-4" >
+		           
+		                <div class="item">
+		                    <div class="blog-item">
+		                        <div class="metaInfo">
+		                            <n:span><n:i class="fa fa-calendar"></n:i> <label value="@load(each.ngayBatDau) @converter('formatedDate',format='dd MMM, yyyy')"/> </n:span>
+		                   			<n:span><n:i class="fa fa-comments"></n:i> <a href="#">${each.dangKys.size() } đăng ký</a></n:span>
+		                        </div>
+		
+		                        <div class="blog-title">
+		                            <n:h2><a href="/c/chitietchuongtrinh?id=${each.id}" >${each.tenChuongTrinh}</a></n:h2>
+		                        </div>
+		
+		                        <div class="blog-desc">
+		                            <n:p><label value="@load(each.ngayBatDau) @converter('formatedDate',format='dd/MM/yyyy')"/> đến 
+									<label value="@load(each.ngayKetThuc) @converter('formatedDate',format='dd/MM/yyyy')"/>...</n:p>
+		
+		                        </div>
+		
+		                        <div class="blog-button">
+		                            <a class="btn btn-small btn-default" href="/c/chitietchuongtrinh?id=${each.id}">Xem thêm</a>
+		                        </div>
+		                    </div>
+		                </div>
+		                </div>
+	                
+	        		</template>
+            </div>
+            <paging class="list-news" pageSize="@load(vm.arg.pagesize)" totalSize="@load(vm.targetQuery.fetchCount())" mold="os"
+            visible="@load(vm.targetQuery.fetchCount() > vm.arg.pagesize ? true : false)"
+            activePage="@bind(vm.arg.page)" onPaging="@command('cmd', notify=vm, atr='targetQuery')" />
+        </div>
+    	</n:section>
+  	</div>
+</zk>

@@ -1,0 +1,136 @@
+<?page title="Quản lý thông báo" contentType="text/html;charset=UTF-8"?>
+<div xmlns:zk="zk" xmlns:n="native" xmlns:x="xhtml" xmlns:w="client"
+	apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('vm') @init('vn.cal.service.NhanVienService')"
+	validationMessages="@id('vmsgs')">
+	<zscript><![CDATA[
+		import java.awt.*;
+		import java.awt.image.*;
+		import java.awt.geom.*;
+		import vn.cal.model.NhanVien;
+		String idStr = execution.getParameter("id");
+		Long id = Long.parseLong(idStr);
+		NhanVien dt = new NhanVien();
+		dt = vm.getCore().em().find(NhanVien.class, id);
+		BufferedImage imagevar2 = new BufferedImage(80, 80, BufferedImage.TYPE_INT_ARGB);
+		//vm.setFlagChange(true);
+	]]></zscript>
+<div  apply="org.zkoss.bind.BindComposer" viewModel="@id('vm2') @init(dt)"
+		validationMessages="@id('vmsgs')">
+		<zscript>
+			vm2.setFlagChange(true);
+		</zscript>
+	<n:section class="content-header">
+	<div class="bread-div">			
+		<a href="/nguoidung">&lt; Quản lý hồ sơ</a>
+	</div>
+		<n:h1 class="header-title">Thêm người dùng mới</n:h1>
+	</n:section>
+	<n:section class="content">
+	    <n:div class="row">
+	    	<n:div class="col-md-12">
+	    		<n:div class="box box-padding box-solid">
+	    			<n:div class="box-header">
+	    				<n:h3 class="box-title">THÔNG TIN CHUNG</n:h3>
+	    			</n:div>
+	    			<n:div class="box-body">
+	    				<n:div class="row">	    					
+	    					<div class="col-md-2 col-sm-3" style="text-align:center;">
+	    						<div class="form-group">
+	    							<div class="div-image">
+	    								<image id="imageCmp" style="width: 120px; height: 160px; border: 1px solid #DDD; object-fit:cover;"
+											content="@load(vm2.imageContent eq null ? imagevar2 : vm2.imageContent) @save(vm2.imageContent)">
+										</image>
+										<div class="div-image-btn">
+											<button class="btn btn-info" upload="true,maxsize=50000"
+												onUpload="@command('attachImages',media=event.media,vmsgs=vmsgs)" >
+											</button>												
+										</div>
+	    							</div>										
+								</div>
+								<n:span style="margin-top: 25px;display: block;" class="semi-title">HÌNH ĐẠI DIỆN</n:span>
+		    				</div>
+		    				<div class="col-md-10 col-sm-9">
+	    							<div class="col-md-6">
+		    							<div class="form-group form-doi-tuong">
+											<x:label class="col-md-4 col-sm-4">Họ và tên<n:small class="required"> *</n:small></x:label>
+											<div class="col-md-8 col-sm-8">													
+												<textbox class="form-control" maxlength="255" width="99%"
+													value="@load(vm2.hoVaTen) @save(vm2.hoVaTen, before='saveNguoiDungCu') 
+													@validator('vn.cal.core.BaseValid', constraint='no empty')"/>
+												<label class="error" value="@load(vmsgs[self.previousSibling])" />
+											</div>
+										</div>
+										<div class="form-group form-doi-tuong">
+											<x:label class="col-md-4 col-sm-4">Email<n:small class="required"> *</n:small></x:label>
+											<div class="col-md-8 col-sm-8">													
+												<textbox class="form-control" maxlength="255" width="99%"
+													value="@bind(vm2.email) @save(vm2.email, before={'saveNguoiDungCu'}) @validator('vn.cal.core.BaseValid', constraint='no empty, /.+@.+\\.[a-z]+/', cmsg='Địa chỉ email không đúng định dạng.')"/>
+												<label class="error" value="@load(vmsgs[self.previousSibling])" />
+											</div>
+										</div>
+										<div class="form-group form-doi-tuong">
+											<x:label class="col-md-4 col-sm-4">Mật khẩu<n:small class="required"> *</n:small></x:label>
+											<div class="col-md-8 col-sm-8">													
+												<textbox class="form-control" type="password" maxlength="255" width="99%"
+													value="@bind(vm2.matKhau2) @save(vm2.matKhau2, before={'saveNguoiDungCu'}) @validator('vn.cal.core.BaseValid', constraint='no empty')"/>
+												<label class="error" value="@load(vmsgs[self.previousSibling])" />
+											</div>
+										</div>
+										<div class="form-group form-doi-tuong">
+											<x:label class="col-md-4 col-sm-4">Ngày sinh</x:label>
+											<div class="col-md-8 col-sm-8">													
+												<datebox width="99%" placeholder="dd/MM/yyyy"
+													format="dd/MM/yyyy" value="@bind(vm2.ngaySinh) @save(vm2.ngaySinh, before='saveNguoiDungCu') 
+														@validator('vn.cal.core.BaseValid', constraint='no future')" 
+													readonly="false"
+													class="mis-datebox-inner" />
+												<label class="error" value="@load(vmsgs[self.previousSibling])" />
+											</div>
+										</div>
+	    							</div>
+	    							<div class="col-md-6">
+	    								<div class="form-group form-doi-tuong">
+											<x:label class="col-md-4 col-sm-4">Số Điện Thoại<n:small class="required"> *</n:small></x:label>
+											<div class="col-md-8 col-sm-8">													
+												<textbox class="form-control" maxlength="255" width="99%"
+													value="@load(vm2.soDienThoai) @save(vm2.soDienThoai, before='saveNguoiDungCu') 
+													@validator('vn.cal.core.BaseValid', constraint='no empty')"/>
+												<label class="error" value="@load(vmsgs[self.previousSibling])" />
+											</div>
+										</div>
+										<div class="form-group form-doi-tuong">
+											<x:label class="col-md-4 col-sm-4">Tên cơ quan</x:label>
+											<div class="col-md-8 col-sm-8">													
+												<textbox class="form-control" maxlength="255" width="99%"
+													value="@load(vm2.tenCoQuan) @save(vm2.tenCoQuan, before='saveNguoiDungCu') "/>
+												<label class="error" value="@load(vmsgs[self.previousSibling])" />
+											</div>
+										</div>
+    									<div class="form-group form-doi-tuong">
+    										<x:label class="col-md-4 col-sm-4">Áp dụng<n:small class="required"> *</n:small></x:label>
+    										<div class="col-md-8 col-sm-8">	
+    											<checkbox checked="@bind(vm2.publishStatus)" />
+    										</div>
+    									</div>
+	    							</div>
+	    					</div>
+		    				<div class="box-footer">
+	    				<x:button class="btn btn-success" 
+							onClick="@command('saveNguoiDungCu', res='nguoidung', attr='targetQuery')">
+							<n:i class="fa fa-save"></n:i>&#160;&#160;Lưu 
+						</x:button>
+						<x:button class="btn btn-default" 
+							onClick="@command('cancel', res='nguoidung')">
+							<n:i ></n:i>Hủy
+						</x:button>						
+					</div>
+		    			</n:div>
+		    		</n:div>
+		    	</n:div>
+		    </n:div>
+		</n:div>
+	</n:section>
+</div>
+</div>
+		    			

@@ -1,0 +1,2 @@
+<?component name="add-duyet-chitiet" inline="true" macroURI="add-duyet-chitiet.zul"?>
+<add-duyet-chitiet model="${arg.vm}" vmArgs="${arg.vmArgs}" save="Thông tin bài đăng" />

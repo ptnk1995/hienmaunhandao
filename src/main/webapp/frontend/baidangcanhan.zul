@@ -1,0 +1,118 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk">
+<style>
+.facebook-thumb{width:40px; display:inline-block; vertical-align:top;}
+.facebook-name{display:inline-block; margin:0px; font-family:Helvetica, Arial, Sans-serif; font-weight:700; color:#3b5998;}
+.facebook-date a{color:#9197a3; font-size:12px; font-weight:500; text-decoration:underline;}
+.facebook-date {color:#9197a3; font-size:12px; font-weight:500;}
+.fa.fa-caret-right{color:#9197a3;}
+.fb-testimonial-copy{padding:15px 0px 0px 0px;}
+.comment{
+    border: solid 1px #E2E2E2;
+    padding: 10px;
+    font-weight: normal;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+</style>
+<zscript><![CDATA[
+  			 vm.getArg().put("pagesize",4);
+  			]]></zscript>
+	<div children="@load(vm.listBaiDang)" zk:if="${ vm.listBaiDang.size() > 0}">
+		<template name="children" var="each">
+			<div class="[ panel panel-default ] panel-google-plus">
+				<div class="panel-heading">
+						<image class="[ img-circle pull-left ]" style="width: 40px;"
+							content="@load(each.nguoiTao.imageContent eq null ? imagevar2 : each.nguoiTao.imageContent)">
+						</image>
+					<n:h3>
+					${each.tieuDe}
+					<button class="fa fa-remove pull-right btn-default" zk:if="${vm.hoVaTen == nhanVien.hoVaTen }"
+						style="margin-right: 10px;"
+						onClick="@command('deleteBaiDang', notify=each, attr='listBaiDang')">
+					</button>
+					</n:h3>
+					<n:h5 style="margin-left: 15px;">
+						<n:span>Tại <label value="@load(each.thanhPho.tenThanhPho)" /></n:span>
+						-
+						<n:span><label value="@load(each.ngayTao) @converter('formatedDate',format='MMM d,yyyy')" /></n:span>
+						|
+						<n:span>
+							<n:i class="fa fa-comments"></n:i>
+							<a href="#">
+								<label value="@load(each.listBinhLuan.size())" /> bình luận
+							</a>
+						</n:span>
+					</n:h5>
+				</div>
+				<div class="panel-body">
+					<n:p>${each.noiDung}</n:p>
+					<a class="panel-google-plus-image">
+						<image 
+							content="@load(each.imageContent eq null ? imagevar2 : each.imageContent)">
+						</image>
+					</a>
+				</div>
+				<div apply="org.zkoss.bind.BindComposer"
+					viewModel="@id('bl') @init('vn.cal.model.BinhLuan')">
+					<div class="panel-footer">
+						<n:p>Bình luận</n:p>
+						<div children="@load(each.listBinhLuan)">
+							<template name="children" var="p">
+								<div class="comment">
+									<div class="fb-testimonial-inner">
+							            <image class="facebook-thumb"
+											content="@load(p.nguoiTao.imageContent eq null ? imagevar2 : p.nguoiTao.imageContent)">
+										</image>
+							            <n:p class="facebook-name">
+								        ${p.nguoiTao.hoVaTen}
+
+								        <button
+								        	class="fa fa-remove pull-right btn-default"
+								        	zk:if="${p.nguoiTao == nhanVien }"
+								        	style="margin-right: 10px;"
+								        	onClick="@command('deleteBinhLuan', notify=p, baidang=each, attr='listBinhLuan', vm = vm)">
+								        </button>
+								        <n:br /><a href="https://www.facebook.com">April 3</a> · <n:i class="fa fa-globe"></n:i></n:p>
+							     
+								       <div>
+								            <n:p>${p.noiDung }</n:p>
+								        </div>
+								    </div>
+								</div>
+							</template>
+						</div>
+						
+						<div class="panel-google-plus-comment">
+							<image class="img-circle" style="width:46px;"
+								content="@load(nhanVien.imageContent eq null ? imagevar2 : nhanVien.imageContent)">
+							</image>
+							<div class="panel-google-plus-textarea"
+								style="float: right; width: calc(100% - 56px);">
+								<textbox style="margin-bottom: 10px;"
+									rows="3" placeholder="Thêm bình luận..." value="@bind(bl.noiDung)">
+								</textbox>
+								<button onClick="@command('saveBinhLuanMoi', nguoi=nhanVien, attr='listBinhLuan', baiDang = each, vm = vm)"
+									class="btn btn-success">
+									Bình luận
+								</button>
+								<button type="reset"
+									class="btn btn-default">
+									Hủy
+								</button>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</template>
+	</div>
+	<div><label value="Chưa có bài đăng nào !" zk:if="${vm.listBaiDang.size() == 0 }"/></div>
+	<div class="col-lg-12 col-md-12 col-sm-12">
+		<paging pageSize="@load(vm.arg.pagesize)"
+			totalSize="@load(vm.listBaiDang.size())"
+			visible="@load(vm.listBaiDang.size() > vm.arg.pagesize ? true : false)"
+			activePage="@bind(vm.arg.page)"
+			onPaging="@command('cmd', notify=vm, attr='listBaiDang')" />
+	</div>
+</zk>

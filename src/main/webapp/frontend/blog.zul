@@ -1,0 +1,49 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk">
+<div apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vm') @init('vn.cal.service.BaiDangService')">
+	<zscript><![CDATA[
+		import java.awt.*;
+		import java.awt.image.*;
+		import java.awt.geom.*;
+		BufferedImage imagevar2 = new BufferedImage(50, 50, BufferedImage.TYPE_INT_ARGB);
+	]]></zscript>
+	<n:section class="page_head">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="col-sm-6">
+						<div class="page_title">
+							<n:h2>Blog</n:h2>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="site-search-area">
+							<n:form method="get" id="site-searchform"
+								action="#">
+								<div>
+									<textbox class="input-text s" value="@bind(vm.arg.tukhoa)" onOK="@command('cmd', notify=vm, attr='*')"
+										placeholder="Nhập từ khóa..." />
+									<button class="searchsubmit" onClick="@command('cmd', notify=vm, attr='*')">Search</button>
+								</div>
+							</n:form>
+						</div><!-- end site search -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</n:section>
+	<n:section class="content blog">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8 col-md-8">
+					<include src="/frontend/listbaidang.zul" />
+				</div>
+				<div class="col-sm-3 col-md-3" apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vm2') @init('vn.cal.service.TinTucService')">
+                    <include src="/frontend/tintuc.zul" />
+				</div>
+			</div>
+		</div>
+	</n:section>
+	</div>
+</zk>

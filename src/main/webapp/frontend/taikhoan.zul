@@ -1,0 +1,150 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" xmlns:w="client">
+	<div class="col-lg-14 col-md-14 col-sm-14">
+		<div class="dividerHeading">
+			<n:h4>
+				<n:span>Thông tin tài khoản</n:span>
+			</n:h4>
+		</div>
+	</div>
+	<div class="col-lg-14 col-md-14 col-sm-14"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm2') @init(nhanVien)"
+		validationMessages="@id('vmsgs')">
+		<div class="col-md-2 col-sm-3" style="text-align:center;">
+			<div class="form-group">
+				<div class="div-image">
+					<image id="imageCmp"
+						style="width: 120px; height: 160px; border: 1px solid #DDD; object-fit:cover;"
+						content="@load(vm2.imageContent eq null ? imagevar2 : vm2.imageContent) @save(vm2.imageContent)">
+					</image>
+					<div class="div-image-btn">
+						<button class=" fa fa-camera"
+							upload="true,maxsize=50000"
+							onUpload="@command('attachImages',media=event.media,vmsgs=vmsgs)">
+						</button>
+					</div>
+				</div>
+			</div>
+			<n:span style="margin-top: 25px;display: block;"
+				class="semi-title">
+				HÌNH ĐẠI DIỆN
+			</n:span>
+		</div>
+		<div class="col-md-10 col-sm-9">
+			<div class="col-md-6">
+				<div class="form-group form-doi-tuong">
+					<x:label class="col-md-4 col-sm-4">
+						Họ và tên
+						<n:small class="required">*</n:small>
+					</x:label>
+					<div class="col-md-8 col-sm-8">
+						<textbox class="form-control" maxlength="255"
+							width="99%"
+							value="@load(vm2.hoVaTen) @save(vm2.hoVaTen, before='saveNguoiDung') 
+													@validator('vn.cal.core.BaseValid', constraint='no empty')" />
+						<label class="error"
+							value="@load(vmsgs[self.previousSibling])" />
+					</div>
+				</div>
+				<div class="form-group form-doi-tuong">
+					<x:label class="col-md-4 col-sm-4">
+						Email
+						<n:small class="required">*</n:small>
+					</x:label>
+					<div class="col-md-8 col-sm-8">
+						<textbox class="form-control" maxlength="255"
+							width="99%"
+							value="@bind(vm2.email) @save(vm2.email, before={'saveNguoiDung'}) @validator('vn.cal.core.BaseValid', constraint='no empty, /.+@.+\\.[a-z]+/', cmsg='Địa chỉ email không đúng định dạng.')" />
+						<label class="error"
+							value="@load(vmsgs[self.previousSibling])" />
+					</div>
+				</div>
+				<div class="form-group form-doi-tuong">
+					<x:label class="col-md-4 col-sm-4">
+						Mật khẩu
+						<n:small class="required">*</n:small>
+					</x:label>
+					<div class="col-md-8 col-sm-8">
+						<textbox class="form-control" type="password"
+							maxlength="255" width="99%"
+							value="@bind(vm2.matKhau2) @save(vm2.matKhau2, before={'saveNguoiDung'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+						<label class="error"
+							value="@load(vmsgs[self.previousSibling])" />
+					</div>
+				</div>
+				<div class="form-group form-doi-tuong">
+					<x:label class="col-md-4 col-sm-4">
+						Ngày sinh
+					</x:label>
+					<div class="col-md-8 col-sm-8">
+						<datebox  placeholder="dd/MM/yyyy"
+							format="dd/MM/yyyy"
+							value="@bind(vm2.ngaySinh) @save(vm2.ngaySinh, before='saveNguoiDung') 
+														@validator('vn.cal.core.BaseValid', constraint='no future')"
+							class="mis-datebox-inner" />
+						<label class="error"
+							value="@load(vmsgs[self.previousSibling])" />
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group form-doi-tuong">
+					<x:label class="col-md-4 col-sm-4">
+						Số Điện Thoại
+						<n:small class="required">*</n:small>
+					</x:label>
+					<div class="col-md-8 col-sm-8">
+						<textbox class="form-control" maxlength="255"
+							width="99%"
+							value="@load(vm2.soDienThoai) @save(vm2.soDienThoai, before='saveNguoiDung') 
+													@validator('vn.cal.core.BaseValid', constraint='no empty')" />
+						<label class="error"
+							value="@load(vmsgs[self.previousSibling])" />
+					</div>
+				</div>
+				<div class="form-group form-doi-tuong">
+					<x:label class="col-md-4 col-sm-4">
+						Tên cơ quan
+					</x:label>
+					<div class="col-md-8 col-sm-8">
+						<textbox class="form-control" maxlength="255"
+							width="99%"
+							value="@load(vm2.tenCoQuan) @save(vm2.tenCoQuan, before='saveNguoiDung') " />
+						<label class="error"
+							value="@load(vmsgs[self.previousSibling])" />
+					</div>
+				</div>
+				<div class="form-group form-doi-tuong"
+					apply="org.zkoss.bind.BindComposer"
+					viewModel="@id('vmm') @init('vn.cal.service.DangKyService')"
+					validationMessages="@id('vmsgs')">
+					<x:label class="col-md-4 col-sm-4">
+						Nhóm máu của bạn
+					</x:label>
+					<div class="col-md-8 col-sm-8">
+						<combobox style="display:block"
+							 model="@load(vmm.listNhomMau)"
+							selectedItem="@bind(vm2.nhomMau)">
+							<template name="model">
+								<comboitem label="@load(each.tenNhom)" />
+							</template>
+						</combobox>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-14">
+			<x:button class="btn btn-success"
+				onClick="@command('saveCaNhan', res='c/thongtincanhan', attr='targetQuery')">
+				<n:i class="fa fa-save"></n:i>
+				&#160;&#160;Lưu
+			</x:button>
+			<x:button class="btn btn-default"
+				onClick="@command('cancel', res='c/thongtincanhan')">
+				<n:i></n:i>
+				Hủy
+			</x:button>
+		</div>
+	</div>
+</zk>

@@ -1,0 +1,2 @@
+<?component name="add-chitiet-view" inline="true" macroURI="add-chitiet-view.zul"?>
+<add-chitiet-view model="${arg.vm}" vmArgs="${arg.vmArgs}" save="Thông tin chi tiết chương trình" />

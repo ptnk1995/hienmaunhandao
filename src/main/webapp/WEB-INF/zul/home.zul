@@ -1,0 +1,256 @@
+<?style href="/css/bootstrap.min.css" type="text/css" ?>
+<?style href="/fonts/css/font-awesome.min.css" type="text/css" ?>
+<?style href="/css/custom.css" type="text/css" ?>
+
+<?script type="text/javascript" src="/js/bootstrap.min.js"?>
+<?script type="text/javascript" src="/js/nicescroll/jquery.nicescroll.min.js"?>
+
+<?script type="text/javascript" src="/js/custom.js"?>
+
+<?page title="Home Page" contentType="text/html;charset=UTF-8"?>
+<?meta http-equiv="X-UA-Compatible" content="IE=edge"?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+
+<zk xmlns:n="native" xmlns:x="xhtml">
+	<zscript><![CDATA[
+		vn.cal.core.App app = vn.cal.core.App.instance;
+		entry = new vn.cal.core.BaseObject().getCore();		
+		nhanVien = entry.getNhanVien();
+		System.out.println("env:"+app);
+		String resource = execution.getParameter("resource");
+		String action = execution.getParameter("action");
+		String file = execution.getParameter("file");
+		System.out.println("-----" + resource +":"+ action + ":" + file);
+		String ctxPath = execution.getContextPath();
+		System.out.println("-----ctxPath" + ctxPath);
+	]]></zscript>
+	<div zclass="container body">
+		<div sclass="main_container">
+			
+			<n:div class="col-md-3 left_col">
+				<n:div class="left_col scroll-view">
+				
+					<n:div class="navbar nav_title" style="border: 0;">
+						<a href="" class="site_title">
+							<n:i class="fa fa-paw"></n:i>
+							<n:span>Gentellela Alela!</n:span>
+						</a>
+					</n:div>
+					<n:div class="clearfix"></n:div>
+					
+					<!-- menu prile quick info -->
+					<n:div class="profile">
+						<n:div class="profile_pic">
+							<n:img src="images/img.jpg" alt="..."
+								class="img-circle profile_img"/>
+						</n:div>
+						<n:div class="profile_info">
+							<n:span>Welcome,</n:span>
+							<n:h2>Caltalys</n:h2>
+						</n:div>
+					</n:div>
+					<!-- /menu prile quick info -->
+
+					<n:br/>
+					
+					<!-- sidebar menu -->
+		 			<n:div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+			        	<n:div class="menu_section">
+			            	<n:h3>General</n:h3>
+			            	<n:ul class="nav side-menu">
+				            	<n:li>
+				            		<n:a>
+				            			<n:i class="fa fa-home"></n:i>
+				            			Home
+				            			<n:span class="fa fa-chevron-down"></n:span>
+				            		</n:a>
+				            		<n:ul class="nav child_menu"
+				            			style="display: none">
+				            			<n:li>
+				            				<n:a href="index.html">
+				            					Dashboard
+				            				</n:a>
+				            			</n:li>
+				            			<n:li>
+				            				<n:a href="index2.html">
+				            					Dashboard2
+				            				</n:a>
+				            			</n:li>
+				            			<n:li>
+				            				<n:a href="index3.html">
+				            					Dashboard3
+				            				</n:a>
+				            			</n:li>
+				            		</n:ul>
+				            	</n:li>
+				            	<n:li>
+				            		<n:a>
+				            			<n:i class="fa fa-home"></n:i>
+				            			Home
+				            			<n:span class="fa fa-chevron-down"></n:span>
+				            		</n:a>
+				            		<n:ul class="nav child_menu"
+				            			style="display: none">
+				            			<n:li>
+				            				<n:a href="index.html">
+				            					Dashboard
+				            				</n:a>
+				            			</n:li>
+				            			<n:li>
+				            				<n:a href="index2.html">
+				            					Dashboard2
+				            				</n:a>
+				            			</n:li>
+				            			<n:li>
+				            				<n:a href="index3.html">
+				            					Dashboard3
+				            				</n:a>
+				            			</n:li>
+				            		</n:ul>
+				            	</n:li>
+			            	</n:ul>
+			            </n:div>
+          			</n:div>
+         			<!-- /sidebar menu -->
+         			
+         			
+					<!-- /menu footer buttons -->
+					<n:div class="sidebar-footer hidden-small">
+						<n:a data-toggle="tooltip" data-placement="top" title="Settings">
+							<n:span class="glyphicon glyphicon-cog" aria-hidden="true"></n:span>
+						</n:a>
+						<n:a data-toggle="tooltip" data-placement="top" title="FullScreen">
+							<n:span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></n:span>
+						</n:a>
+						<n:a data-toggle="tooltip" data-placement="top" title="Lock">
+							<n:span class="glyphicon glyphicon-eye-close" aria-hidden="true"></n:span>
+						</n:a>
+						<n:a data-toggle="tooltip" data-placement="top" title="Logout">
+							<n:span class="glyphicon glyphicon-off" aria-hidden="true"></n:span>
+						</n:a>
+					</n:div>
+					<!-- /menu footer buttons -->
+				</n:div>
+			</n:div>
+			
+			<!-- top navigation -->
+      		<n:div class="top_nav">
+      			<n:div class="nav_menu">
+      				<n:nav class="" role="navigation">
+      					
+      					<n:div class="nav toggle">
+      						<n:a id="menu_toggle"><n:i class="fa fa-bars"></n:i></n:a>
+      					</n:div>
+      					
+      					<n:ul class="nav navbar-nav navbar-right">
+      						<n:li class="">
+      							<n:a href="javascript:;" class="user-profile dropdown-toggle"
+      								data-toggle="dropdown" aria-expanded="false">
+      								<n:img src="images/img.jpg" alt="">Caltalys
+      									<n:span class=" fa fa-angle-down"></n:span>
+      								</n:img>
+      							</n:a>
+      							<n:ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+      								<n:li>
+      									<n:a href="javascript:;">Profile</n:a>
+      								</n:li>
+      								<n:li>
+      									<n:a href="javascript:;">
+      										<n:span class="badge bg-red pull-right">50%</n:span>
+      										<n:span>Settings</n:span>
+      									</n:a>
+      								</n:li>
+      								<n:li>
+      									<n:a href="javascript:;">Help</n:a>
+      								</n:li>
+      								<n:li>
+      									<n:a href="login.html">
+      										<n:i class="fa fa-sign-out pull-right"></n:i>Log Out
+      									</n:a>
+      								</n:li>
+      							</n:ul>
+      						</n:li>
+      						
+      						
+      						<n:li role="presentation" class="dropdown">
+	      						<n:a href="javascript:;"
+	      							class="dropdown-toggle info-number" data-toggle="dropdown"
+	      							aria-expanded="false">
+	      							<n:i class="fa fa-envelope-o"></n:i>
+	      							<n:span class="badge bg-green">6</n:span>
+	      						</n:a>
+	      						<n:ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
+		      						<n:li>
+		      							<n:a>
+		      								<n:span class="image">
+		      									<n:img src="images/img.jpg" alt="Profile Image" />
+		      								</n:span>
+		      								<n:span>
+		      									<n:span>John Smith</n:span>
+		      									<n:span class="time">3 mins ago</n:span>
+		      								</n:span>
+		      								<n:span class="message">
+		      									Film festivals used to be
+		      									do-or-die moments for
+		      									movie makers. They were
+		      									where...
+		      								</n:span>
+		      							</n:a>
+		      						</n:li>
+		      						<n:li>
+		      							<n:div class="text-center">
+		      								<n:a href="inbox.html">
+		      									<n:strong>
+		      										See All Alerts
+		      									</n:strong>
+		      									<n:i
+		      										class="fa fa-angle-right">
+		      									</n:i>
+		      								</n:a>
+		      							</n:div>
+		      						</n:li>
+	      						</n:ul>
+      						</n:li>
+      					</n:ul>
+      					
+      				</n:nav>
+      			</n:div>
+      		</n:div>
+      		<!-- /top navigation -->
+      		
+      		<!-- page content -->
+      		<n:div class="right_col" role="main">
+				
+				<include instant="true" src="${execution.getParameter('file')}"></include>
+				<!-- <label if="${!coquyen}">Bạn không có quyền truy cập chức năng này!</label> -->
+					
+      			<!-- footer content -->
+      			<n:footer>
+      				<n:div class="copyright-info">
+      					<n:p class="pull-right">
+      						Gentelella - Bootstrap Admin Template by
+      						<n:a href="https://colorlib.com">
+      							Colorlib
+      						</n:a>
+      					</n:p>
+      				</n:div>
+      				<n:div class="clearfix"></n:div>
+      			</n:footer>
+      			<!-- /footer content -->
+
+      		</n:div>
+      		<!-- /page content -->
+      		
+      		
+		</div>
+	</div>
+	
+	<n:div id="custom_notifications"
+		class="custom-notifications dsp_none">
+		<n:ul class="list-unstyled notifications clearfix"
+			data-tabbed_notifications="notif-group">
+		</n:ul>
+		<n:div class="clearfix"></n:div>
+		<n:div id="notif-group" class="tabbed_notifications"></n:div>
+	</n:div>
+</zk>

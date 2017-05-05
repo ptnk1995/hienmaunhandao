@@ -1,0 +1,172 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" >
+<style>
+.btns {
+    width: 500px;
+    margin: 0 auto;
+}
+.initial-content .btn {
+    position: relative;
+    padding: 8px 0 8px 36px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    line-height: 1.5em;
+    width: 100%;
+}
+.initial-content .btn-f-b span {
+    left: 12px;
+    margin-top: -13px;
+    background-position: -510px -226px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: block;
+    width: 12px;
+    height: 26px;
+}
+.btn-f-b, .btn-f-b .disabled, .btn-f-b[disabled] {
+    border-color: #3b5998;
+    background: #3b5998;
+    color: #fff;
+}
+.btn-google, .btn-google .disabled, .btn-google[disabled] {
+    border-color: #dd4b39;
+    background: #dd4b39;
+    color: #fff;
+}
+.initial-content .btn-google span {
+    left: 8px;
+    margin-top: -10px;
+    background-position: -466px -270px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: block;
+    width: 32px;
+    height: 20px;
+}
+.css-sprite-index {
+    background-image: url(//ds055uzetaobb.cloudfront.net/site_media/version-Vebaaf1a383/build_sprites/css-sprite-index.png);
+}
+
+.initial-content .btn span {
+    position: absolute;
+    top: 50%;
+}
+
+</style>
+	<window class="container" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('vn.cal.service.NhanVienService')">		
+		<n:div class = "col-md-5" style="margin-bottom:5%">
+					<n:div class="col-md-7">
+						<div 	apply="org.zkoss.bind.BindComposer"
+								viewModel="@id('vmm') @init('vn.cal.FacebookOauthUtil')">	
+							<a  
+								href="${vmm.getAuthorizationUrl()}"
+							    class="btn btn-block btn-social btn-facebook" style="color:white">
+    						 	<n:i class="fa fa-facebook"></n:i>
+							   	 Sign in with Facebook
+							</a>
+						</div>
+							
+					</n:div>
+				</n:div>	
+		<div class="row">
+			<div
+				class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4 well">
+				<n:legend style="text-align: center;">
+					<a href="http://www.jquery2dotnet.com" style="color: #ea2e4f;">
+						<n:i class="glyphicon glyphicon-globe"></n:i>
+					</a>
+					Đăng nhập!
+				</n:legend>
+				<n:form action="#" method="post" class="form"
+					role="form">
+					<div class="login-field">
+						<x:label>Email</x:label>
+						<textbox type="text" id="username" focus="true"
+							class="form-control username" placeholder="Nhập email của bạn"
+							onOK="@command('login',email=username.getValue(),password=password.getValue())">
+						</textbox>
+						<n:span class="icon-username"></n:span>
+					</div>
+					<div class="login-field">
+						<x:label>Mật khẩu</x:label>
+						<textbox type="password" id="password"
+							class="form-control password" placeholder="Mật khẩu"
+							onOK="@command('login',email=username.getValue(),password=password.getValue())">
+						</textbox>
+						<n:span class="icon-password"></n:span>
+
+					</div>
+					<div class="login-field" style="margin-bottom: 10px; ">
+						<a href="/c/signup"><label value="Bạn chưa có tài khoản !" /></a>
+						<!-- <n:div class="fb-login-button" style="float: right; margin-right: 5px;"
+							scope="public_profile,email" onlogin="checkLoginState();">
+						</n:div> -->
+					</div>
+					<div class="clr"></div>
+					<!-- <div>
+						<a
+							class="btn btn-lg btn-default submit btn-block" label="Đăng nhập"
+							onClick="@command('login',email=username.getValue(),password=password.getValue())">
+						</a>
+					</div>
+					<n:div id="status"></n:div>
+					<div class="clearfix"></div> -->
+				</n:form>
+			</div>
+		</div>
+	</window> 
+
+<!-- <script type="text/javascript">
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if (response.status === 'connected') {
+      testAPI();
+    } else {
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    }
+  }
+
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '1665782153728717',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.8' // use graph api version 2.8
+  });
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me?fields=name,email', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Chào mừng bạn đến với website, ' + response.name + '!' + '<a href="${ctxPath}/">' + response.email + '</a>';
+    });
+  }
+</script> -->
+</zk>

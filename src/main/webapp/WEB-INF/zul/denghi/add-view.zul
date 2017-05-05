@@ -1,0 +1,77 @@
+<window xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" apply="org.zkoss.bind.BindComposer"
+	id="wdn" border="normal" mode="modal" action="show: slideIn"
+	contentStyle="overflow:auto;" closable="true" title="${arg.save}"
+	onClose="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')"
+	whatever="@load(false, after='saveDonVi') @converter('vn.cal.service.DetachConverter')"
+	viewModel="@id('vm') @init(arg.model)" validationMessages="@id('vmsgs')" width="50%">
+	<zscript>
+		vmArgs = arg.get("vmArgs");
+		System.out.println("vmArgs " +vmArgs);
+	</zscript>
+	
+	<div class="row box-body">
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Tên người đề nghị<n:small class="required"> *</n:small></x:label>
+				<combobox readonly="true" style="display:block"
+					width="100%" model="@load(vmArgs.listNguoiDung)" selectedItem="@bind(vm.nguoiGui) @bind(vmArgs.selectedNguoiGui)">
+					<template name="model">
+						<comboitem label="@load(each.hoVaTen)" />
+					</template>
+				</combobox>
+			</div>
+		</div>
+
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Loại máu</x:label>
+				<radiogroup id="sv3"
+					selectedItem="@bind(vm.loaiMau) @bind(vmArgs.selectedLoaiMau)"
+					model="@load(vmArgs.listLoaiMau)" />
+				<template name="model">
+					<radio label="@load(each.ghiChu)" radiogroup="sv3" />
+				</template>
+			</div>
+		</div>
+
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Nhóm máu bạn cần</x:label>
+				<combobox readonly="true" style="display:block"
+					width="100%" model="@load(vmArgs.listNhomMau)" selectedItem="@bind(vm.nhomMau) @bind(vmArgs.selectedNhomMau)">
+					<template name="model">
+						<comboitem label="@load(each.tenNhom)" />
+					</template>
+				</combobox>
+			</div>
+		</div>
+		
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Chọn người được đề nghị<n:small class="required"> *</n:small></x:label>
+				<combobox readonly="true" style="display:block"
+					width="100%" model="@load(vmArgs.listNguoiDungAndNM)" selectedItem="@bind(vm.nguoiNhan)">
+					<template name="model">
+						<comboitem label="@load(each.hoVaTen)" />
+					</template>
+				</combobox>
+			</div>
+		</div>
+
+		<div class="col-md-12">
+			<div class="form-group">
+				<checkbox label="Áp dụng" checked="@bind(vm.publishStatus)" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="row box-footer">  
+		<x:button class="btn btn-default pull-right" onClick="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')">
+			Hủy
+		</x:button>
+		<x:button style="margin-right: 10px;" class="btn btn-primary pull-right"
+			onClick="@command('saveDeNghi', list=vmArgs, attr='targetQuery', wdn=wdn)">
+			<n:i class="fa fa-save"></n:i>&#160;&#160;Lưu
+		</x:button>
+	</div>
+</window>

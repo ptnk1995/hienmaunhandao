@@ -1,0 +1,25 @@
+<window xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" apply="org.zkoss.bind.BindComposer"
+	id="wdn" border="normal" mode="modal" action="show: slideIn"
+	contentStyle="overflow:auto;" closable="true" title="${arg.save}"
+	onClose="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')"
+	whatever="@load(false, after='saveDonVi') @converter('vn.cal.service.DetachConverter')"
+	viewModel="@id('vm') @init(arg.model)" validationMessages="@id('vmsgs')"  height="17%">
+	<zscript>
+		vmArgs = arg.get("vmArgs");
+		System.out.println("vmArgs " +vmArgs);
+	</zscript>
+	
+	<div class="row box-footer"> 
+		<x:button style="margin-right: 10px;" class="btn btn-warning close"
+			onClick="@command('saveTuChoi', list=vmArgs, attr='targetQuery', wdn=wdn)">
+			<n:i class="fa fa-remove"></n:i>&#160;&#160;Từ chối
+		</x:button>
+		<x:button style="margin-right: 10px;" class="btn btn-success"
+			onClick="@command('saveChapNhan', list=vmArgs, attr='targetQuery', wdn=wdn)">
+			<n:i class="fa fa-check"></n:i>&#160;&#160;Chấp nhận
+		</x:button> 
+		<x:button class="btn btn-primary" onClick="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')">
+			<n:i class="fa fa-trash"></n:i>&#160;&#160;Hủy bỏ
+		</x:button>
+	</div>
+</window>

@@ -1,0 +1,122 @@
+<window xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" apply="org.zkoss.bind.BindComposer"
+	id="wdn" border="normal" mode="modal" action="show: slideIn"
+	contentStyle="overflow:auto;" closable="true" title="${arg.save}"
+	onClose="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')"
+	whatever="@load(false, after='saveDonVi') @converter('vn.cal.service.DetachConverter')"
+	viewModel="@id('vm') @init(arg.model)" validationMessages="@id('vmsgs')" width="50%">
+	<zscript>
+		vmArgs = arg.get("vmArgs");
+		System.out.println("vmArgs " +vmArgs);
+	</zscript>
+	
+	<div class="row box-body">
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Họ và tên<n:small class="required"> *</n:small></x:label>
+				<textbox class="form-control" width="100%" maxlength="255"
+					value="@bind(vm.hoTen) @save(vm.hoTen, before={'saveDangKy'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+				<label class="error" value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		</div>
+		
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Email<n:small class="required"> *</n:small></x:label>
+				<textbox class="form-control" width="100%"
+					maxlength="255"
+					value="@bind(vm.email) @save(vm.email, before={'saveDangKy'}) @validator('vn.cal.core.BaseValid', constraint=self.value eq '' ? '' : '/.+@.+\\.[a-z]+/',cmsg='Địa chỉ email không đúng định dạng.')" />
+				<label class="error" value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		</div>
+
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>
+					Số điện thoại
+					<n:small class="required">*</n:small>
+				</x:label>
+				<textbox class="form-control" width="100%"
+					maxlength="255"
+					value="@bind(vm.soDienThoai) @save(vm.soDienThoai, before={'saveDangKy'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+				<label class="error"
+					value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>
+					Số lần đã thực hiện hiến máu
+					<n:small class="required">*</n:small>
+				</x:label>
+				<textbox class="form-control" width="100%"
+					maxlength="255"
+					value="@bind(vm.soLanHienTruoc) @save(vm.soLanHienTruoc, before={'saveDangKy'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+				<label class="error"
+					value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		</div>
+		<div class="form-group" style="margin:15px; width:25%; float:left;">
+			<x:label>
+				Thời gian đã hiến máu gần nhất
+				<n:small class="required">*</n:small>
+			</x:label>
+			<datebox cols="12" width="100%" placeholder="dd/MM/yyyy" class="mis-datebox-inner"
+				format="dd/MM/yyyy"
+				value="@bind(vm.thoiGianVuaHien) @save(vm.thoiGianVuaHien, before={'saveDangKy'}) @validator('vn.cal.core.BaseValid', constraint='no empty') "
+				readonly="false" />
+			<label class="error"
+				value="@load(vmsgs[self.previousSibling])" />
+		</div>
+		<div style="clear:both;">
+		</div>
+		<div class="form-group" style="margin:15px; width:25%;">
+			<x:label>
+				Thời gian dự định hiến máu
+				<n:small class="required">*</n:small>
+			</x:label>
+			<datebox cols="12" width="100%" placeholder="dd/MM/yyyy" class="mis-datebox-inner"
+				format="dd/MM/yyyy"
+				value="@bind(vm.thoiGianSapHien)@save(vm.thoiGianSapHien, before={'saveDangKy'}) @validator('vn.cal.core.BaseValid', constraint='no empty') "
+				readonly="false" />
+			<label class="error"
+				value="@load(vmsgs[self.previousSibling])" />
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Nhóm máu của bạn</x:label>
+				<combobox readonly="true" style="display:block"
+					width="100%" model="@load(vmArgs.listNhomMau)" selectedItem="@bind(vm.nhomMau)">
+					<template name="model">
+						<comboitem label="@load(each.tenNhom)" />
+					</template>
+				</combobox>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Chọn chương trình</x:label>
+				<combobox readonly="true" style="display:block"
+					width="100%" model="@load(vmArgs.listChuongTrinh)" selectedItem="@bind(vm.chuongTrinhHienMau)">
+					<template name="model">
+						<comboitem label="@load(each.tenChuongTrinh)" />
+					</template>
+				</combobox>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<checkbox label="Áp dụng" checked="@bind(vm.publishStatus)" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="row box-footer">  
+		<x:button class="btn btn-default pull-right" onClick="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')">
+			Hủy
+		</x:button>
+		<x:button style="margin-right: 10px;" class="btn btn-primary pull-right"
+			onClick="@command('saveDangKy', list=vmArgs, attr='targetQuery', wdn=wdn)">
+			<n:i class="fa fa-save"></n:i>&#160;&#160;Lưu
+		</x:button>
+	</div>
+</window>

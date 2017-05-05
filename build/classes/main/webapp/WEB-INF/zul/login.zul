@@ -1,0 +1,8 @@
+<?page id="login_page" title="Đăng nhập"?>
+<zk>
+	<window>
+		<label value="dang nhap"></label>
+		<a href="${execution.getContextPath()}">home</a>
+	</window>
+
+</zk>

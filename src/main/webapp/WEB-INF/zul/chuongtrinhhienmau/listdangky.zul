@@ -1,0 +1,52 @@
+<window xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" apply="org.zkoss.bind.BindComposer"
+	id="wdn" border="normal" mode="modal" action="show: slideIn"
+	contentStyle="overflow:auto;" closable="true" title="${arg.save}"
+	onClose="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')"
+	whatever="@load(false, after='saveDonVi') @converter('vn.cal.service.DetachConverter')"
+	viewModel="@id('vm') @init(arg.model)" validationMessages="@id('vmsgs')" width="70%">
+	<zscript>
+		vmArgs = arg.get("vmArgs");
+		vm = arg.get("vm");
+		System.out.println("vmArgs " +vmArgs);
+		System.out.println("vm " +vm);
+	</zscript>
+	<n:div class="col-md-12">
+				<grid model="@load((vm.dangKys))" width="100%" id="grid"
+		emptyMessage="Không có danh sách đăng ký">
+		<columns>
+			<column label="STT" hflex="min" class="text-align-center"/>
+			<column label="Email" width="25%" />
+			<column label="Số điện thoại" />
+			<column label="Nhóm Máu" />
+			<column label="Trạng thái" hflex="min" class="text-align-center"/>
+		</columns>
+		<template name="model">
+			<row >
+				<cell>
+					<label value="@bind(forEachStatus.index + 1 + vm.arg.page * vm.arg.pagesize)" style="text-align:center;display:block"/>
+				</cell>
+				<cell>
+					<label value="@load(each.nguoiTao.email)"/>
+				</cell>
+				<cell>
+					<label value="@load(each.soDienThoai)"/>
+				</cell>
+				<cell>
+					<label value="@load(each.nhomMau.tenNhom)" />
+				</cell>
+				<cell class="text-align-center">
+					<label value="@load(each.publishStatusText)"/>
+				</cell>			
+			</row>
+		</template>
+	</grid>
+		<paging pageSize="@load(vm.arg.pagesize)" totalSize="@load(vm.dangKys.size())"
+	visible="@load(vm.dangKys.size() > vm.arg.pagesize ? true : false)" activePage="@bind(vm.arg.page)"
+	onPaging="@command('cmd', notify=vm, attr='dangKys')" /> -->
+     </n:div>
+	<div class="row box-footer">  
+		<x:button class="btn btn-default pull-right" onClick="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')">
+			Hủy
+		</x:button>
+	</div>
+</window>

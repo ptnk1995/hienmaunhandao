@@ -1,0 +1,40 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk">
+	<div class="widget widget_tab">
+		<div class="velocity-tab sidebar-tab">
+			<n:ul class="nav nav-tabs">
+				<n:li class="active">
+					<n:a href="#Popular" data-toggle="tab">Nhật ký</n:a>
+				</n:li>
+			</n:ul>
+			<div class="tab-content clearfix"
+				apply="org.zkoss.bind.BindComposer"
+				viewModel="@id('vmmv') @init(nhanVien)">
+				<n:div class="tab-pane fade active in" id="Popular">
+					<n:ul class="recent_tab_list">
+						<div children="@load(vmmv.listNhatKy)">
+							<template name="children" var="each">
+								<n:li>
+									<n:span>
+										<a href="#">
+											<image
+												class="[ img-circle pull-left ]" width="30px"
+												content="@load(nhanVien.imageContent eq null ? imagevar2 : nhanVien.imageContent)">
+											</image>
+										</a>
+									</n:span>
+									<label
+										value="@load(each.toString())" />
+									<n:i>
+										<label
+											value="@load(each.ngayTao) @converter('formatedDate',format='hh:mm:ss dd/MM/yyy')" />
+									</n:i>
+								</n:li>
+							</template>
+						</div>
+					</n:ul>
+				</n:div>
+			</div>
+		</div>
+	</div>
+
+</zk>

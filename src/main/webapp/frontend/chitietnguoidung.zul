@@ -1,0 +1,31 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk">
+<zscript><![CDATA[
+	if(nhanVien == null)
+		Executions.sendRedirect("/c/signin");
+]]></zscript>
+	<div children="@load(vm.findById(id))" zk:if="${nhanVien != null}">
+		<template name="children" var="each">
+			<div class="row profile">
+				<div class="profile-sidebar">
+					<div class="profile-userpic">
+						<image 
+							content="@load(each.imageContent eq null ? imagevar2 : each.imageContent) ">
+						</image>
+					</div>
+					<div class="profile-usertitle">
+						<div class="profile-usertitle-name">
+							<label value="@load(each.hoVaTen)" class="profile-usertitle-name" />
+						</div>
+						<div class="profile-usertitle-job">
+							${each.email }
+						</div>
+					</div>
+					<!-- <div class="profile-userbuttons">
+						<n:button type="button" class="btn btn-success btn-sm">Đề nghị</n:button>
+					</div> -->
+				</div>
+			
+		</div>
+		</template>
+	</div>
+</zk>

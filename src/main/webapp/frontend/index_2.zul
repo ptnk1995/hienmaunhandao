@@ -1,0 +1,55 @@
+<?style href="/backend/toastr/build/toastr.css" type="text/css" ?>
+<?style href="/frontend/assetsfe/css/style.css" type="text/css" ?>
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" xmlns:w="client">
+
+<!-- jQuery 2.2.0 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(window).load(function(){
+  		$('.loader').fadeOut(300);
+  	});
+</script>
+<!-- 3.3.6 -->
+<!-- FastClick -->
+<script type="text/javascript" src="/backend/admin-lte/plugins/fastclick/fastclick.js" />
+<!-- SlimScroll 1.3.0 -->
+<script type="text/javascript" src="/backend/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js" />
+<!-- AdminLTE for demo purposes -->
+<script type="text/javascript" src="/backend/admin-lte/dist/js/demo.js" />
+<!-- AdminLTE App -->
+<script type="text/javascript" src="/backend/admin-lte/dist/js/app.js" defer="true"/>
+<!-- Toastr js -->
+<script type="text/javascript" src="/backend/toastr/build/toastr.min.js" />
+<!-- PACE -->
+<script type="text/javascript" src="/backend/admin-lte/plugins/pace/pace.min.js" />
+<zscript><![CDATA[
+		                  
+			entry = new vn.cal.core.BaseObject();		
+			nhanVien = entry.getNhanVien();
+			if(nhanVien.getEmail().isEmpty()){
+				System.out.print("nhanVien"+nhanVien.getEmail()+"  ff");
+				nhanVien = null;
+			}
+			//System.out.print("nhanVien"+nhanVien.getEmail()+"  ff");
+			String resource = execution.getParameter("resource");
+			String action = execution.getParameter("action");
+			String file = execution.getParameter("file");
+			String ctxPath = execution.getContextPath();
+			String serverName = execution.getServerName() + "";
+			String serverPort = execution.getServerPort() + "";
+			String urlImage = "http://" + serverName + ":" + serverPort + ctxPath;
+			
+			/* coquyen = "dashboard".equals(resource) || entry.quyen.get(resource + "_" + action); */
+			
+		]]></zscript>
+		<div class="loader" style="position:fixed; top: 0; left: 0; right: 0; bottom: 0; z-index:99999; background: #fff">
+			<n:img style="position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%)" src="${ctxPath}/frontend/assetsfe/images/loading.gif" alt=""></n:img>
+		</div>
+		<include src="/frontend/layout/header.zul" />
+		<n:section class="wrapper">
+			<include instant="true"
+				src="${execution.getParameter('file')}">
+			</include>
+		</n:section>
+		<include src="/frontend/layout/footer.zul" />
+</zk>

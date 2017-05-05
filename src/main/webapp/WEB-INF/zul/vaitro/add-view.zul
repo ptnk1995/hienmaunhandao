@@ -1,0 +1,62 @@
+<window xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" apply="org.zkoss.bind.BindComposer"
+	id="wdn" border="normal" mode="modal" action="show: slideIn"
+	contentStyle="overflow:auto;" closable="true" title="${arg.save}"
+	onClose="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')"
+	whatever="@load(false, after='saveDonVi') @converter('vn.cal.service.DetachConverter')"
+	viewModel="@id('vm') @init(arg.model)" validationMessages="@id('vmsgs')" width="50%">
+	<zscript>
+		vmArgs = arg.get("vmArgs");
+		notifyObject = arg.get("notify");
+		System.out.println("vmArgs " +vmArgs);
+		System.out.println("notifyObject " +notifyObject);
+	</zscript>
+	
+	<div class="row box-body">
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Tên vai trò<n:small class="required"> *</n:small></x:label>
+				<textbox class="form-control" width="100%" maxlength="255"
+					value="@bind(vm.tenVaiTro) @save(vm.tenVaiTro, before={'saveVaiTro'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+				<label class="error" value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		</div>
+
+		<div class="col-md-12">
+			<div class="form-group">
+				<checkbox label="Áp dụng" checked="@bind(vm.publishStatus)" />
+			</div>
+		</div>
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="form-group">
+				<x:label>Phân quyền chức năng</x:label>
+				<tree multiple="true" checkmark="true" model="@load(vm.model)"
+					selectedItems="@bind(vm.selectedItems)" height="500px">
+					<custom-attributes
+						org.zkoss.zul.tree.rightSelect="false" />
+					<treecols sizable="true">
+						<treecol label="Tên chức năng và quyền"></treecol>
+					</treecols>
+					<template name="model" var="node">
+						<treeitem open="true">
+							<treerow>
+								<treecell>
+									<label value="@load(node.data[0])"></label>
+								</treecell>
+							</treerow>
+						</treeitem>
+					</template>
+				</tree>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row box-footer">  
+		<x:button class="btn btn-default pull-right" onClick="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')">
+			Hủy
+		</x:button>
+		<x:button style="margin-right: 10px;" class="btn btn-primary pull-right"
+			onClick="@command('saveVaiTro', list=vmArgs, attr='targetQuery', wdn=wdn)">
+			<n:i class="fa fa-save"></n:i>&#160;&#160;Lưu
+		</x:button>
+	</div>
+</window>

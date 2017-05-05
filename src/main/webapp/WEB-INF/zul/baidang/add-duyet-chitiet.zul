@@ -1,0 +1,107 @@
+
+
+<window xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" apply="org.zkoss.bind.BindComposer"
+	id="wdn" border="normal" mode="modal" action="show: slideIn"
+	contentStyle="overflow:auto;" closable="true" title="${arg.save}"
+	onClose="@command('invokeGG', notify=vmArgs, detach=wdn, attr='baiDangChuaDuyet')"
+	whatever="@load(false, after='saveDonVi') @converter('vn.cal.service.DetachConverter')"
+	viewModel="@id('vm') @init(arg.model)" validationMessages="@id('vmsgs')" width="50%">
+	
+	<style>
+    .img-crop,
+   .img-crop img{
+    width: 50%; 
+   }
+   
+   .img-crop{
+    background-color: #ededed; 
+    overflow: hidden; 
+    letter-spacing: -0.31em; 
+    *letter-spacing: normal; 
+    word-spacing: -0.43em; 
+   }
+ 
+   </style>
+	<zscript>
+		vmArgs = arg.get("vmArgs");
+		System.out.println("vmArgs " +vmArgs);
+		import java.awt.*;
+		import java.awt.image.*;
+		import java.awt.geom.*;
+		System.out.print("entry "+entry.getCount());
+		BufferedImage imagevar2 = new BufferedImage(10, 10, BufferedImage.TYPE_INT_ARGB);
+	</zscript>
+	
+	<div class="row box-body">
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Tiêu đề: </x:label>
+				<label width="100%" maxlength="255"
+					value="@bind(vm.tieuDe)" />
+				<label class="error" value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		</div>
+		
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Nội dung: </x:label>
+				<label width="100%" value="@bind(vm.noiDung)" />
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<div class="">
+					
+					<div zclass="img-crop">
+						<image id="imageCmp" width="100%" height=""
+							sclass="mis-image-upload"
+							content="@bind(vm.imageContent eq null ? imagevar2 : vm.imageContent)">
+						</image>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Thành phố: </x:label>
+				<!-- <combobox readonly="true" style="display:block"
+					width="100%" model="@load(vmArgs.listThanhPho)" selectedItem="@bind(vm.thanhPho)">
+					<template name="model">
+						<comboitem label="@load(each.tenThanhPho)" />
+					</template>
+				</combobox> -->
+				<label value="@bind(vm.thanhPho.tenThanhPho)"/>
+				<label class="error" value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		</div>
+		<div style="margin: 15px;">
+				<x:label>Nhóm máu</x:label>
+				<grid id="grid" mold="paging" model="@load(vm.nhomMaus)" emptyMessage="Không có dữ liệu">
+					<columns>
+						<column label="Tên nhóm máu" />
+					</columns>
+					<template name="model">
+						<row>
+							<label value="@load(each.tenNhom)" />
+						</row>
+					</template>
+				</grid>
+			</div>
+		
+		<div class="col-md-12">
+			<div class="form-group">
+				<checkbox label="Áp dụng" checked="@bind(vm.publishStatus)" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="row box-footer">  
+		<x:button class="btn btn-default pull-right" onClick="@command('invokeGG', notify=vmArgs, detach=wdn, attr='listDuyet')">
+			Hủy
+		</x:button>
+		<x:button style="margin-right: 10px;" class="btn btn-primary pull-right"
+			onClick="@command('saveBaiDangS', vm=vm, list=vmArgs, attr='listDuyet', wdn=wdn, c = 'count')">
+			<n:i class="fa fa-save"></n:i>&#160;&#160;Lưu
+		</x:button>
+	</div>
+</window>

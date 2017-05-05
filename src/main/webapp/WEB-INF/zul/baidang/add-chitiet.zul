@@ -1,0 +1,3 @@
+<?component name="add-chitiet-view" inline="true" macroURI="add-chitiet-view.zul"?>
+<add-chitiet-view model="${entry.baiDangService.type().newInstance()}"  vmArgs="${arg.vmArgs}" save="Chọn nhóm máu" />
+

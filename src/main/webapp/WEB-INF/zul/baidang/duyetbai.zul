@@ -1,0 +1,107 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk">
+	<div>
+		            			
+		<zscript><![CDATA[
+			self.page.title= "Quản lý bài đăng";
+			import java.awt.*;
+			import java.awt.image.*;
+			import java.awt.geom.*;
+			BufferedImage imagevar2 = new BufferedImage(10, 10, BufferedImage.TYPE_INT_ARGB);
+		]]></zscript>
+		<n:section class="content-header">
+			<n:h1>Duyệt bài đăng</n:h1>
+		</n:section>
+		
+		<n:section class="content">
+		    <n:div class="row">
+		    	<n:div class="col-md-12">
+		    		<n:div class="box box-info">
+		    			<n:div class="box-header">
+		    				<n:h3 class="box-title">Tìm kiếm</n:h3>
+		    				<n:div class="box-tools pull-right">
+		    					<n:button type="button" class="btn btn-box-tool" data-widget="collapse"><n:i class="fa fa-minus"></n:i></n:button>
+		    				</n:div>
+		    			</n:div>
+		    			<n:div class="box-body">
+		    				<n:div class="row">
+		    					<n:div class="col-md-4">
+		    						<n:div class="form-group">
+		    							<x:label class="control-label">Từ khóa</x:label>
+		    							<textbox class="form-control" value="@bind(vm.arg.tukhoa)" placeholder="Nhập từ khoá"
+		    								onOK="@command('cmd', notify=vm, attr='*')" />
+		    						</n:div>
+		    					</n:div>
+		    					
+		    					<n:div class="col-md-6">
+		    						<x:label class="control-label">&#160;</x:label>
+		    						<n:div class="form-group">
+		    							<x:button class="btn btn-warning" type="button" onClick="@command('cmd', notify=vm, attr='*')" >
+											<n:i class="fa fa-search"></n:i> Tìm kiếm
+										</x:button>
+		    						</n:div>
+		    					</n:div>
+		    				</n:div>
+		    			</n:div>
+		    		</n:div>
+		    	</n:div>
+		    	
+		    	<n:div class="col-md-12">
+		    		<n:div class="box box-success">
+		    			
+		    			<n:div class="box-body">
+	    					<n:div class="row">
+	    						<n:div class="col-md-12">
+	    							<grid model="@load(vm.listDuyet)" width="100%" id="grid" mold="paging" pageSize="5"
+										emptyMessage="Không có danh sách bài đăng">
+										<columns>
+											<column label="STT" hflex="min" class="text-align-center"/>
+											<column label="Tiêu đề" width="25%" />
+											<column label="Nội dung" />
+											<column label="Ngày tạo" />
+											<column label="Trạng thái" hflex="min" class="text-align-center"/>
+											<column label="Thao tác" width="110px" />
+										</columns>
+										<template name="model">
+											<row apply="org.zkoss.bind.BindComposer"
+												viewModel="@id('item') @init(each)">
+												<cell>
+													<label value="@bind(forEachStatus.index + 1 + vm.arg.page * vm.arg.pagesize)" style="text-align:center;display:block"/>
+												</cell>
+												<cell>
+													<a label="@load(each.tieuDe)" onClick="@command('redirectPage', zul='baidang/view.zul', vmArgs=vm, vm=item)" />
+												</cell>
+												<cell>
+													<label value="@load(each.noiDung)" />
+												</cell>
+												<cell>
+													<label value="@load(each.ngayTao) @converter('formatedDate',format='dd/MM/yyyy')" />
+												</cell>
+												<cell class="text-align-center">
+													<label value="@load(each.publishStatusText)"/>
+												</cell>			
+												<div class="text-align-center">
+													<x:button class="btn btn-info btn-xs" title="Duyệt"
+														onClick="@command('redirectPage', zul='baidang/add-duyet.zul', vmArgs=vm, vm=item)">
+														<n:i class="fa fa-edit"></n:i>
+													</x:button>
+													<x:button class="btn btn-danger btn-xs" title="Xóa"
+														onClick="@command('deleteTrangThaiConfirmAndNotify', notify=vm, attr='listDuyet')">
+														<n:i class="fa fa-trash"></n:i>
+													</x:button>
+												</div>
+											</row>
+										</template>
+									</grid>
+	                            </n:div>
+	                        </n:div>
+		                </n:div>
+		                
+	                    <div class="overlay" visible="false">
+	                        <n:i class="fa fa-refresh fa-spin"></n:i>
+	                    </div>
+		            </n:div>
+		        </n:div>  
+		    </n:div>
+		</n:section>
+	</div>
+</zk>

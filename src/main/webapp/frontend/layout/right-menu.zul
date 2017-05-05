@@ -1,0 +1,36 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk">
+	<div class="col-lg-4 col-md-4 col-sm-4">
+		<div class="sidebar">
+			<div class="widget widget_search">
+				<div class="site-search-area">
+					<n:form method="get" id="site-searchform"
+						action="#">
+						<div>
+							<n:input class="input-text" name="s" id="s"
+								placeholder="Nhập từ khóa..." type="text" />
+							<n:input id="searchsubmit" value="Search"
+								type="submit" />
+						</div>
+					</n:form>
+				</div><!-- end site search -->
+			</div>
+			<div class="widget widget_categories">
+				<div class="widget_title">
+					<n:h4>
+						<span>Khu vực</span>
+					</n:h4>
+				</div>
+				<div>
+					<n:ul class="arrows_list list_style">
+						<n:li>
+							<a href="#">
+								<label value="Thành Phố" />
+							</a>
+						</n:li>
+					</n:ul>
+				</div>
+			</div>
+		</div>
+		<include src="/frontend/nhatky.zul" />
+	</div>
+</zk>

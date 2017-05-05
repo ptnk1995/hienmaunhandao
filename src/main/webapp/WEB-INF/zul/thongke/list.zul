@@ -1,0 +1,32 @@
+<?page title="Quản lý thông báo" contentType="text/html;charset=UTF-8"?>
+<div xmlns:zk="zk" xmlns:n="native" xmlns:x="xhtml" apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('vm') @init('vn.cal.model.DeNghi')"
+	validationMessages="@id('vmsgs')">
+	<zscript><![CDATA[
+		self.page.title= "Thống kê";
+		//System.out.println("thongke: " + entry.quyen.get("thongke_thong-ke-ket-qua-phat-hien-xu-ly-dang-ky-thuong-tru"));
+	]]></zscript>
+	<n:section class="content-header">
+		
+		<n:span class="header-title">Thống kê</n:span>
+	</n:section>
+	<n:section class="content">	
+		<n:div class="row">
+	    	<div class="col-sm-4">
+	    		<div class="serviceBox_1">
+	    			<div class="service-icon">
+	    				<n:i class="fa fa-folder-open-o"></n:i>
+	    			</div>
+	    			<div class="service-content">
+	    				<a href="/thongke/thong-ke-nguoi-tham-gia">
+	    					<n:h3>Người tham gia hiến máu</n:h3>
+	    					<n:span class="bold">
+	    						Kết quả chọn lọc số lượng người đã đăng ký và chấp nhận tham gia
+	    					</n:span>
+	    				</a>
+	    			</div>
+	    		</div>
+	    	</div>
+		</n:div>
+	</n:section>
+</div>

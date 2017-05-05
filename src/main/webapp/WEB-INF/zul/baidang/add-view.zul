@@ -1,0 +1,144 @@
+<window xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" apply="org.zkoss.bind.BindComposer"
+	id="wdn" border="normal" mode="modal" action="show: slideIn"
+	contentStyle="overflow:auto;" closable="true" title="${arg.save}"
+	onClose="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')"
+	whatever="@load(false, after='saveDonVi') @converter('vn.cal.service.DetachConverter')"
+	viewModel="@id('vm') @init(arg.model)" validationMessages="@id('vmsgs')" width="50%">
+	
+	<style>
+    .img-crop,
+   .img-crop img{
+    width: 50%; 
+   }
+   
+   .img-crop{
+    background-color: #ededed; 
+    overflow: hidden; 
+    letter-spacing: -0.31em; 
+    *letter-spacing: normal; 
+    word-spacing: -0.43em; 
+   }
+ 
+   </style>
+	<zscript>
+		vmArgs = arg.get("vmArgs");
+		System.out.println("vmArgs " +vmArgs);
+		import java.awt.*;
+		import java.awt.image.*;
+		import java.awt.geom.*;
+		BufferedImage imagevar2 = new BufferedImage(10, 10, BufferedImage.TYPE_INT_ARGB);
+	</zscript>
+	
+	<div class="row box-body">
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Tiêu đề<n:small class="required"> *</n:small></x:label>
+				<textbox class="form-control" width="100%" maxlength="255"
+					value="@bind(vm.tieuDe) @save(vm.tieuDe, before={'saveBaiDang'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+				<label class="error" value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		</div>
+		
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Nội dung<n:small class="required"> *</n:small></x:label>
+				<ckeditor toolbar="Full" id="WYSIWYG" width="100%"
+					height="600px"
+					filebrowserBrowseUrl="${labels.filestore.files}"
+					customConfigurationsPath="/js/configWYSIYG.js"
+					value="@bind(vm.noiDung) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+			</div>
+		</div>
+	
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Thành phố<n:small class="required"> *</n:small></x:label>
+				<combobox readonly="true" style="display:block"
+					width="100%" model="@load(vmArgs.listThanhPho)" selectedItem="@bind(vm.thanhPho)">
+					<template name="model">
+						<comboitem label="@load(each.tenThanhPho)" />
+					</template>
+				</combobox>
+				<label class="error" value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		</div>
+		<div style="margin: 15px;">
+				<x:label>Nhóm máu</x:label>
+				<grid id="grid" mold="paging" model="@load(vm.nhomMaus)" emptyMessage="Không có dữ liệu">
+					<columns>
+						<column label="Tên nhóm máu" />
+					</columns>
+					<template name="model">
+						<row>
+							<label value="@load(each.tenNhom)" />
+							<div class="text-align-center">
+								<x:button class="btn btn-danger btn-xs"
+									title="Xóa"
+									onClick="@command('deleteChiTiet',notify=each, attr='nhomMaus')">
+									<n:i class="fa fa-trash"></n:i>
+								</x:button>
+							</div>
+						</row>
+					</template>
+				</grid>
+			</div>
+		<n:div class="box-header">
+			<n:div class="box-tool">
+				<x:button class="btn btn-success"
+					onClick="@command('redirectPage', zul='baidang/add-chitiet.zul', vmArgs=vm, vm=vm)">
+					<n:i class="fa fa-plus"></n:i>
+					Chọn nhóm máu bạn cần
+				</x:button>
+			</n:div>
+		</n:div>
+		<div style="margin: 15px;">
+				<x:label>Bình luận</x:label>
+				<grid id="gri" mold="paging" model="@load(vm.listBinhLuan)" pageSize="4" emptyMessage="Không có dữ liệu">
+					<columns>
+						<column label="Nội dung" />
+						<column label="Ngày tạo" />
+						<column label="Trạng thái" />
+						<column label="Thao tác" />
+					</columns>
+					<template name="model">
+						<row>
+							<label value="@load(each.noiDung)" />
+							<label value="@load(each.ngayTao)" />
+							<label value="@load(each.publishStatusText)" />
+							<div class="text-align-center">
+								<x:button class="btn btn-danger btn-xs"
+									title="Xóa"
+									onClick="@command('deleteBinhLuan',notify=each, attr='listBinhLuan')">
+									<n:i class="fa fa-trash"></n:i>
+								</x:button>
+							</div>
+						</row>
+					</template>
+				</grid>
+			</div>
+		<n:div class="box-header">
+			<n:div class="box-tool">
+				<x:button class="btn btn-success"
+					onClick="@command('redirectPage', zul='baidang/add-binhluan.zul', vmArgs=vm, vm=vm)">
+					<n:i class="fa fa-plus"></n:i>
+					Thêm bình luận
+				</x:button>
+			</n:div>
+		</n:div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<checkbox label="Áp dụng" checked="@bind(vm.publishStatus)" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="row box-footer">  
+		<x:button class="btn btn-default pull-right" onClick="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')">
+			Hủy
+		</x:button>
+		<x:button style="margin-right: 10px;" class="btn btn-primary pull-right"
+			onClick="@command('saveBaiDang', list=vmArgs, attr='targetQuery', wdn=wdn, c='count')">
+			<n:i class="fa fa-save"></n:i>&#160;&#160;Lưu
+		</x:button>
+	</div>
+</window>

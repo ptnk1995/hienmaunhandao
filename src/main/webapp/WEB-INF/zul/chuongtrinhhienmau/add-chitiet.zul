@@ -1,0 +1,3 @@
+<?component name="add-chitiet-view" inline="true" macroURI="add-chitiet-view.zul"?>
+<add-chitiet-view model="${entry.chiTietChuongTrinhService.type().newInstance()}"  vmArgs="${arg.vmArgs}" save="Thêm mới chi tiết" />
+

@@ -1,0 +1,86 @@
+<window xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" apply="org.zkoss.bind.BindComposer"
+	id="wdn" border="normal" mode="modal" action="show: slideIn"
+	contentStyle="overflow:auto;" closable="true" title="${arg.save}"
+	onClose="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')"
+	whatever="@load(false, after='saveDonVi') @converter('vn.toancauxanh.service.DetachConverter')"
+	viewModel="@id('vm') @init(arg.model)" validationMessages="@id('vmsgs')" width="50%">
+	<zscript>
+		vmArgs = arg.get("vmArgs");
+	</zscript>
+	
+	<div class="row box-body">
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Tên đơn vị<n:small class="required"> *</n:small></x:label>
+				<textbox class="form-control" width="100%" maxlength="255"
+					value="@bind(vm.tenDonVi) @save(vm.tenDonVi, before={'saveDonVi'}) @validator('vn.toancauxanh.vm.BaseValid', constraint='no empty')" />
+				<label class="error" value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Mã đơn vị</x:label>
+				<textbox class="form-control" width="100%" maxlength="255"
+					value="@bind(vm.maDonVi) @save(vm.maDonVi, before={'saveDonVi'})" />
+				<label class="error" value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Địa chỉ</x:label>
+				<textbox class="form-control" width="100%" maxlength="255"
+					value="@bind(vm.diaChi) @save(vm.diaChi, before={'saveDonVi'})" />
+				<label class="error" value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Chức năng, nhiệm vụ</x:label>
+				<textbox class="form-control" rows="5" maxlength="255" value="@bind(vm.chucNangNhiemVu)" />
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<checkbox label="Là sở, ban, ngành" checked="@bind(vm.laSoBanNganh)" onCheck="@command('thayDoiSoBanNganh')"/>
+			</div>
+		</div>
+		
+		<div class="col-md-12">
+			<div class="form-group">
+				<checkbox label="Là quận, huyện" checked="@bind(vm.laQuanHuyen)" onCheck="@command('thayDoiQuanHuyen')"/>
+			</div>
+		</div>
+		
+		<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12" visible="@load(vm.laQuanHuyen)">
+			<div class="form-group">
+				<x:label>Quận/Huyện<n:small class="required"> *</n:small></x:label>
+				<combobox width="100%" model="@load(entry.listQuanHuyen)"
+					readonly="true"
+					selectedItem="@bind(vm.quanHuyen) @save(vm.quanHuyen, before='saveDonVi') @validator('vn.toancauxanh.vm.BaseValid', constraint=vm.laQuanHuyen ? 'no empty' : '')"
+					placeholder="Quận/Huyện" >
+					<template name="model">
+						<comboitem label="@load(each.ten)" />
+					</template>
+				</combobox>
+				<label class="error" value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		</div>
+		
+		<div class="col-md-12">
+			<div class="form-group">
+				<checkbox label="Áp dụng" checked="@bind(vm.checkApDung)" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="row box-footer">  
+		<x:button class="btn btn-default pull-right" onClick="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')">
+			Hủy
+		</x:button>
+		<x:button style="margin-right: 10px;" class="btn btn-primary pull-right" 
+		 	visible="@load(entry.quyen.donvi_them or entry.quyen.donvi_sua)"
+			onClick="@command('saveDonVi', list=vmArgs, attr='targetQuery', wdn=wdn)">
+			<n:i class="fa fa-save"></n:i>&#160;&#160;Lưu
+		</x:button>
+	</div>
+</window>

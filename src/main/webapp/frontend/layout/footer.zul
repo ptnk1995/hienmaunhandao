@@ -1,0 +1,275 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" xmlns:w="client">
+	<n:footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-md-3 col-lg-3">
+					<div class="widget_title">
+						<n:h4>
+							<span>Chúng tôi</span>
+						</n:h4>
+					</div>
+					<div class="widget_content">
+						<n:p>
+							Hệ thống được tạo ra với mong muốn cứu sống
+							con người, giảm được sự lo lắng cho bệnh
+							nhân và người nhà khi gặp phải những tai nạn
+							nguy hiểm.
+						</n:p>
+						<n:ul class="contact-details-alt">
+							<n:li>
+								<n:i class="fa fa-map-marker"></n:i>
+								<n:p>
+									<n:strong>Địa chỉ</n:strong>
+									: 459 Tôn Đức Thắng
+								</n:p>
+							</n:li>
+							<n:li>
+								<n:i class="fa fa-user"></n:i>
+								<n:p>
+									<n:strong>Phone</n:strong>
+									:(+84) 01685113644
+								</n:p>
+							</n:li>
+							<n:li>
+								<n:i class="fa fa-envelope"></n:i>
+								<n:p>
+									<n:strong>Email</n:strong>
+									:
+									<a href="#">lesa@tran.com</a>
+								</n:p>
+							</n:li>
+						</n:ul>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-3 col-lg-3">
+					<div class="widget_title">
+						<n:h4>
+							<span>Giới thiệu</span>
+						</n:h4>
+					</div>
+					<div class="widget_content">
+						<n:ul class="links">
+							<n:li>
+								<a href="#">
+									Trang đăng ký hiến máu
+									<span>3 - 07, 2016</span>
+								</a>
+							</n:li>
+							<n:li>
+								<a href="#">
+									Hướng dẫn tham gia
+									<span>10 - 05, 2016</span>
+								</a>
+							</n:li>
+							<n:li>
+								<a href="#">
+									Chương trình hiến máu
+									<span>10 - 03, 2017</span>
+								</a>
+							</n:li>
+							<n:li>
+								<a href="#">
+									Liên hệ người dùng
+									<span>10 - 02, 2017</span>
+								</a>
+							</n:li>
+						</n:ul>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-3 col-lg-3">
+					<div class="widget_title">
+						<n:h4>
+							<span>Liên hệ</span>
+						</n:h4>
+
+					</div>
+					<div class="widget_content">
+						<n:ul class="tweet_list">
+							<n:li class="tweet_content item">
+								<n:p class="tweet_link">
+									<a href="#">@jquery_rain</a>
+									
+								</n:p>
+								<span class="time">
+									29 September 2015
+								</span>
+							</n:li>
+						</n:ul>
+					</div>
+					<div class="widget_content">
+						<div class="tweet_go"></div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-3 col-lg-3">
+					<div class="widget_title">
+						<n:h4>
+							<span>Bản đồ</span>
+						</n:h4>
+					</div>
+					<div class="widget_content">
+						<div class="flickr">
+							<x:iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.0572827125543!2d108.1569943142964!3d16.06251698888508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa691cb5163d76dae!2zxJDhuqFpIEjhu41jIFPGsCBQaOG6oW0gxJDDoCBO4bq1bmc!5e0!3m2!1sen!2s!4v1489485240287" frameborder="0" style="border:0"></x:iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</n:footer>
+
+	<n:section class="footer_bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<n:p class="copyright">
+						Copyright 2017 Electrify | Write by
+						<a href="http://www.jqueryrain.com/">
+							Trần Thị Lê Sa
+						</a>
+					</n:p>
+				</div>
+
+				<div class="col-sm-6 ">
+					<div class="footer_social">
+						<n:ul class="footbot_social">
+							<n:li>
+								<n:a class="fb" href="#."
+									data-placement="top" data-toggle="tooltip" title="Facebook">
+									<n:i class="fa fa-facebook"></n:i>
+								</n:a>
+							</n:li>
+							<n:li>
+								<n:a class="twtr" href="#."
+									data-placement="top" data-toggle="tooltip" title="Twitter">
+									<n:i class="fa fa-twitter"></n:i>
+								</n:a>
+							</n:li>
+							<n:li>
+								<n:a class="dribbble" href="#."
+									data-placement="top" data-toggle="tooltip" title="Dribbble">
+									<n:i class="fa fa-dribbble"></n:i>
+								</n:a>
+							</n:li>
+							<n:li>
+								<n:a class="skype" href="#."
+									data-placement="top" data-toggle="tooltip" title="Skype">
+									<n:i class="fa fa-skype"></n:i>
+								</n:a>
+							</n:li>
+							<n:li>
+								<n:a class="rss" href="#."
+									data-placement="top" data-toggle="tooltip" title="RSS">
+									<n:i class="fa fa-rss"></n:i>
+								</n:a>
+							</n:li>
+						</n:ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</n:section>
+	<script type="text/javascript" src="/frontend/assetsfe/js/jquery-1.10.2.min.js"></script>
+	<script src="/frontend/assetsfe/js/bootstrap.min.js"></script>
+	<script src="/frontend/assetsfe/js/jquery.easing.1.3.js"></script>
+	<script src="/frontend/assetsfe/js/retina-1.1.0.min.js"></script>
+	<script type="text/javascript" src="/frontend/assetsfe/js/jquery.cookie.js"></script> <!-- jQuery cookie -->
+	<script type="text/javascript" src="/frontend/assetsfe/js/styleswitch.js"></script> <!-- Style Colors Switcher -->
+	<script src="/frontend/assetsfe/js/jquery.fractionslider.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="/frontend/assetsfe/js/jquery.smartmenus.min.js"></script>
+	<script type="text/javascript" src="/frontend/assetsfe/js/jquery.smartmenus.bootstrap.min.js"></script>
+	<script type="text/javascript" src="/frontend/assetsfe/js/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="/frontend/assetsfe/js/jflickrfeed.js"></script>
+	<script type="text/javascript" src="/frontend/assetsfe/js/jquery.magnific-popup.min.js"></script>
+	<script type="text/javascript" src="/frontend/assetsfe/js/jquery.isotope.min.js"></script>
+	<script type="text/javascript" src="/frontend/assetsfe/js/jquery-hoverdirection.min.js"></script>
+	<script type="text/javascript" src="/frontend/assetsfe/js/jquery.easypiechart.min.js"></script>
+	<script type="text/javascript" src="/frontend/assetsfe/js/swipe.js"></script>
+	<script type="text/javascript" src="/frontend/assetsfe/js/jquery.matchHeight-min.js"></script>
+	<script type="text/javascript" src="/frontend/assetsfe/js/jquery-scrolltofixed-min.js"></script>
+	<script src="/frontend/assetsfe/js/main.js"></script>
+	<script type='text/javascript'>
+     (function($) {
+        "use strict";
+        var $container = $('.portfolio'),
+                $items = $container.find('.portfolio-item'),
+                portfolioLayout = 'fitRows';
+
+        if( $container.hasClass('portfolio-centered') ) {
+            portfolioLayout = 'masonry';
+        }
+
+        $container.isotope({
+            filter: '*',
+            animationEngine: 'best-available',
+            layoutMode: portfolioLayout,
+            animationOptions: {
+                duration: 750,
+                easing: 'linear',
+                queue: false
+            },
+            masonry: {
+            }
+        }, refreshWaypoints());
+
+        function refreshWaypoints() {
+            setTimeout(function() {
+            }, 1000);
+        }
+
+        $('ul#filter li').on('click', function() {
+            var selector = $(this).attr('data-filter');
+            $container.isotope({ filter: selector }, refreshWaypoints());
+            $('ul#filter li').removeClass('selected');
+            $(this).addClass('selected');
+            return false;
+        });
+
+        function getColumnNumber() {
+            var winWidth = $(window).width(),
+                    columnNumber = 1;
+
+            if (winWidth > 1200) {
+                columnNumber = 5;
+            } else if (winWidth > 950) {
+                columnNumber = 4;
+            } else if (winWidth > 600) {
+                columnNumber = 3;
+            } else if (winWidth > 400) {
+                columnNumber = 2;
+            } else if (winWidth > 250) {
+                columnNumber = 1;
+            }
+            return columnNumber;
+        }
+
+        function setColumns() {
+            var winWidth = $(window).width(),
+                    columnNumber = getColumnNumber(),
+                    itemWidth = Math.floor(winWidth / columnNumber);
+
+            $container.find('.portfolio-item').each(function() {
+                $(this).css( {
+                    width : itemWidth + 'px'
+                });
+            });
+        }
+
+        function setPortfolio() {
+            setColumns();
+            $container.isotope('reLayout');
+        }
+
+        $container.imagesLoaded(function () {
+            setPortfolio();
+        });
+
+        $(window).on('resize', function () {
+            setPortfolio();
+        });
+    })(jQuery);
+</script>
+<script type="text/javascript" src="assetsfe/js/wow.min.js"></script>
+<script>
+    // WOW Animation
+    new WOW().init();
+</script>
+</zk>

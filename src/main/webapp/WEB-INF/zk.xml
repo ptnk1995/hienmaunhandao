@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk>
+	<library-property>
+		<name>org.zkoss.web.preferred.locale</name>
+		<value>vi</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.web.preferred.timeZone</name>
+		<value>GMT+0</value>
+	</library-property>
+	<language-config>
+	  	<addon-uri>/WEB-INF/ckez-bind-addon.xml</addon-uri>
+	    <addon-uri>/WEB-INF/lang-addon.xml</addon-uri>
+	</language-config>
+	<client-config>
+		<debug-js>true</debug-js>
+	</client-config>
+	<device-config>
+		<device-type>ajax</device-type>
+		<timeout-uri><!-- Empty URL causes reload -->
+		</timeout-uri>
+	</device-config>
+	<library-property>
+		<name>org.zkoss.zk.WPD.cache</name>
+		<value>false</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zk.WCS.cache</name>
+		<value>false</value>
+	</library-property>
+
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/WEB-INF/zul/error.zul</location>
+	</error-page>
+	<device-config>
+		<device-type>ajax</device-type>
+		<timeout-uri>/</timeout-uri>
+	</device-config>
+	<system-config>
+		<max-upload-size>-1</max-upload-size>
+		<label-location>/WEB-INF/classes/application.properties
+		</label-location>
+	</system-config>
+</zk>

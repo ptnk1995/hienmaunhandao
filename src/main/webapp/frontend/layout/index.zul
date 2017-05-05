@@ -1,0 +1,233 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" xmlns:w="client">
+<div>
+<a href="/">Go to USER area</a>
+<br>
+<a href="/nguoidung">Go to ADMIN area</a>
+</div>
+	<div class="slider-wrapper">
+		<div class="slider">
+			<div class="fs_loader"></div>
+			<div class="slide">
+				<n:img
+					src="frontend/assetsfe/images/fraction-slider/base1.jpg"
+					width="1920" height="auto" data-in="fade" data-out="fade" />
+
+				<n:img
+					src="frontend/assetsfe/images/fraction-slider/slider-boy.png"
+					width="400" height="400" data-position="30,1100" data-in="left"
+					data-out="right" data-delay="700" />
+
+				<n:p class="slide-1" data-position="50,610"
+					data-in="fade" data-out="fade" data-delay="800">
+					Give blood
+				</n:p>
+				<n:p class="slide-1" data-position="100,560"
+					data-in="fade" data-out="fade" data-delay="1200">
+					Save life
+				</n:p>
+
+				<n:p class="slide-1a" data-position="314,760"
+					data-in="bottom" data-out="bottom" data-delay="4200"
+					data-ease-in="easeOutBounce">
+					Cứ một người hiến máu
+				</n:p>
+				<n:p class="slide-1a" data-position="361,753"
+					data-in="bottom" data-out="bottom" data-delay="5200"
+					data-ease-in="easeOutBounce">
+					sẽ có 3 người được cứu sống...
+				</n:p>
+			</div>
+
+			<div class="slide">
+				<n:img
+					src="frontend/assetsfe/images/fraction-slider/base_2.jpg"
+					width="1920" height="auto" data-in="fade" data-out="fade" />
+
+				<n:img
+					src="frontend/assetsfe/images/fraction-slider/slider-girl.png"
+					width="400" height="345" data-position="20,400" data-in="right"
+					data-0ut="bottom" data-delay="500" />
+
+				<n:p class="slide-2 " data-position="120,900"
+					data-in="bottom" data-out="top" data-delay="2000">
+					Hãy chia sẻ bằng cách hiến máu !
+				</n:p>
+				<n:p class="slide-2a " data-position="210,900"
+					data-in="left" data-out="right" data-delay="3000">
+					Sự sống và cái chết đang đe dọa những người bệnh
+				</n:p>
+			</div>
+
+			<div class="slide">
+				<n:img
+					src="frontend/assetsfe/images/fraction-slider/base_3.jpg"
+					width="1920" height="auto" data-in="fade" data-out="fade" />
+
+				<n:p class="sub-line" data-position="230,370"
+					data-in="right" data-out="left" data-delay="2500">
+					Máu là thứ thuốc không thể tạo ra từ khoa học
+				</n:p>
+
+				<n:img
+					src="frontend/assetsfe/images/fraction-slider/gadgets/mack.png"
+					width="357" height="313" data-position="90,1040" data-in="top"
+					data-out="bottom" data-delay="200">
+
+					<n:a href="" class="btn btn-lg btn-default"
+						data-position="320,370" data-in="bottom" data-out="bottom"
+						data-delay="3700" data-ease-in="easeOutBounce">
+						Nó có sẵn trong mỗi con người, hãy chung tay vì
+						cộng đồng
+					</n:a>
+				</n:img>
+			</div>
+		</div>
+	</div>
+	<div class="grey_bg">
+		<div class="container" apply="org.zkoss.bind.BindComposer"
+			viewModel="@id('vm') @init('vn.cal.service.ChuongTrinhHienMauService')">
+			<zscript>System.out.print("vm"+vm)</zscript>
+				<div class="row sub_content">
+				<div   children="@load(vm.trangChu)">
+				<template name="children" var="each">
+					<div class="col-sm-4">
+						<div class="serviceBox_5">
+							<label value="${forEachStatus.index + 1 + vm.arg.page * vm.arg.pagesize}" class="service-icon" />
+							<n:h3>${each.tenChuongTrinh}</n:h3>
+							<n:p>...
+							</n:p>
+							<n:small><label value="@load(each.ngayBatDau) @converter('formatedDate',format='dd/MM/yyyy')"/> đến </n:small>
+							<n:small><label value="@load(each.ngayKetThuc) @converter('formatedDate',format='dd/MM/yyyy')"/></n:small>
+							<div class="read">
+								<a href="/c/chitietchuongtrinh?id=${each.id}" class="btn btn-default">
+									Xem thêm
+								</a>
+							</div>
+						</div>
+					</div>
+					</template>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<n:section>
+			<div class="container">
+				<div class="row sub_content">
+					<div class="col-md-12">
+						<div class="dividerHeading">
+							<n:h4>
+								<n:span>Những người hiến máu nổi bật</n:span>
+							</n:h4>
+						</div>
+					</div>
+					<div apply="org.zkoss.bind.BindComposer"
+					viewModel="@id('vm3') @init('vn.cal.service.DangKyService')">
+						<div children="@load(vm3.getSoLanHienMau())">
+							<template name="children" var="each">
+								<div class="col-lg-3 col-md-3 col-sm-6">
+			                        <div class="our-team">
+			                            <div class="pic">
+			                            <image width="262px" height="216px"
+			                            	content="@load(each.nguoiTao.imageContent eq null ? imagevar2 : each.nguoiTao.imageContent)">
+			                            </image>
+			                            <div class="social_media_team">
+			                                    <n:ul class="team_social">
+			                                        <n:li><n:a class="fb" href="#." data-placement="top" data-toggle="tooltip" title="Facbook"><n:i class="fa fa-facebook"></n:i></n:a></n:li>
+			                                        <n:li><n:a class="gmail" href="#." data-placement="top" data-toggle="tooltip" title="Google"><n:i class="fa fa-google-plus"></n:i></n:a></n:li>
+			                                        <n:li><n:a class="twtr" zk:if="${nhanVien != null }" href="${ctxPath }/c/trangcanhan?id=${each.nguoiTao.id}" data-placement="top" data-toggle="tooltip" title="Xem"><n:i class="fa fa-arrow-right"></n:i></n:a></n:li>                     
+			                                    </n:ul>
+			                           	</div>
+			                            </div>
+			                        </div>
+			                    </div>
+		                    </template>
+	                    </div>
+                    </div>
+				</div>
+			</div>
+		</n:section>
+
+		<div class="grey-content">
+			<div class="container-fluid" >
+				<div class="row" style="display: flex">
+					<div
+						class="col-md-6 col-md-offset-1 super_sub_content clearfix same-height">
+						<div class="col-sm-6">
+							<div class="serviceBox_1">
+								<div class="service-icon">
+									<n:i class="fa fa-pencil"></n:i>
+								</div>
+								<div class="service-content">
+									<n:h3>Kiểm tra sức khỏe miễn phí</n:h3>
+									<n:p>
+										Bạn chỉ được hiến máu nếu cơ
+										thể mình đủ khỏe mạnh. Bạn sẽ
+										phải trải qua loạt các
+										kiểm tra sức khỏe trước khi hiến máu và hoàn toàn miễn phí.
+									</n:p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="serviceBox_1">
+								<div class="service-icon">
+									<n:i class="fa fa-diamond"></n:i>
+								</div>
+								<div class="service-content">
+									<n:h3>Giảm nguy cơ mắc bệnh tim</n:h3>
+									<n:p>
+										 Hiến máu thường xuyên sẽ giúp
+										 kiểm soát lượng sắt trong cơ
+										 thể.Bạn có thể đọc
+										 thêm các thông tin khoa học tại
+										 tờ
+										 <n:a class="linkdoc" href='http://aje.oxfordjournals.org/content/148/5/445.full.pdf'>
+										 	Dịch tễ học Hoa Kỳ.
+										 </n:a>
+									</n:p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="serviceBox_1">
+								<div class="service-icon">
+									<n:i class="fa fa-anchor"></n:i>
+								</div>
+								<div class="service-content">
+									<n:h3>Mang đến hi vọng cho người bệnh</n:h3>
+									<n:p>Lượng
+										máu mà bạn hiến sẽ được chia
+										thành nhiều phần theo nhu cầu
+										của từng bệnh nhân. Với mỗi lần
+										hiến máu, bạn có thể cứu sống 3
+										hoặc 4 bệnh nhân.
+									</n:p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="serviceBox_1">
+								<div class="service-icon">
+									<n:i class="fa fa-gears"></n:i>
+								</div>
+								<div class="service-content">
+									<n:h3>Giảm nguy cơ ung thư</n:h3>
+									<n:p>
+ Mặc dù lý thuyết này vẫn chỉ đang được nghiên cứu để tìm ra những bằng
+ chứng cụ thể. Nếu bạn cần có thêm động lực? Hãy đọc câu chuyện về
+ <a class="linkdoc" href='http://www.dailymail.co.uk/news/article-2333507/Florida-man-84-reaches-rare-milestone-Hes-donated-100-gallons-blood.html'>chàng trai người Florida</a>.
+									</n:p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5 inner-image same-height hidden-sm hidden-xs" style="position: relative;" >
+					<div class="bg-image" style="background: url('frontend/assetsfe/images/hienmau.JPG')"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+</zk>

@@ -1,0 +1,139 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk">
+<zscript><![CDATA[
+	if(nhanVien != null){
+		
+	}
+	else Executions.sendRedirect("/c/signin");
+	]]></zscript>
+<n:section class="page_head">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="page_title">
+						<n:h2>Đăng ký hiến máu</n:h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</n:section>
+	<div class="container" zk:if="${nhanVien != null}">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 well form-dk">
+			
+				<n:legend style="text-align: center;">
+					<a href="http://www.jquery2dotnet.com" style="color: #ea2e4f;">
+						<n:i class="glyphicon glyphicon-globe"></n:i>
+					</a>
+					Nhập thông tin đăng ký!
+				</n:legend>
+				<div  apply="org.zkoss.bind.BindComposer" 
+				viewModel="@id('vm') @init('vn.cal.model.DangKy')" validationMessages="@id('vmsgs')">
+				<n:form action="#" method="post" class="form" role="form">
+				<n:fieldset>
+					<div class="col-md-12">
+						<div class="form-group">
+							<n:label class="col-md-4">
+								Thể tích hiến tặng
+							</n:label>
+							<div class="col-md-3">
+								<textbox class="form-control" width="100%"
+									maxlength="255"
+									value="@bind(vm.theTich) @save(vm.theTich, before={'saveDangKyMoi'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+								<label class="error"
+									value="@load(vmsgs[self.previousSibling])" />
+							</div>
+							
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<n:label class="col-md-4 control-label">
+									Số lần đã hiến máu
+									<n:small class="required">*</n:small>
+							</n:label>
+							<div class="col-md-3">
+								<textbox class="form-control" width="100%"
+									maxlength="255"
+									value="@bind(vm.soLanHienTruoc) @save(vm.soLanHienTruoc, before={'saveDangKyMoi'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+								<label class="error"
+									value="@load(vmsgs[self.previousSibling])" />
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<n:label class="col-md-4 control-label">
+								Thời gian đã hiến máu gần nhất
+							</n:label>
+							<div class="col-md-6">
+								<datebox placeholder="dd/MM/yyyy"
+									format="dd/MM/yyyy"
+									value="@bind(vm.thoiGianVuaHien) @save(vm.thoiGianVuaHien, before={'saveDangKyMoi'} )"
+									readonly="false" />
+							</div>
+						</div>
+						</div>
+						<div class="col-md-12">
+						<div class="form-group">
+	                                		<n:label class="col-md-4 control-label">
+	                                			Thời gian dự định hiến máu
+	                                			<n:small class="required">
+	                                				*
+	                                			</n:small>
+	                                		</n:label>
+	                                		<div class="col-md-6">
+	                                			<datebox placeholder="dd/MM/yyyy" format="dd/MM/yyyy"
+	                                				value="@bind(vm.thoiGianSapHien) @save(vm.thoiGianSapHien, before={'saveDangKyMoi'}) @validator('vn.cal.core.BaseValid', constraint='no empty')"
+	                                				readonly="false" />
+	                                			<label class="error"
+	                                				value="@load(vmsgs[self.previousSibling])" />
+	                                		</div>
+	                                	</div>
+	                                	</div>
+					<div apply="org.zkoss.bind.BindComposer"
+						viewModel="@id('vmArgs') @init('vn.cal.service.DangKyService')">
+						
+						<div  class="col-md-12" style="margin-bottom: 10px;">
+							<div class="form-group">
+								<x:label class="col-md-4 control-label">
+									Chọn chương trình
+								</x:label>
+								<div class="col-md-6">
+									<combobox 
+										style="display:block; "  
+										model="@load(vmArgs.listChuongTrinh)"
+										selectedItem="@bind(vm.chuongTrinhHienMau)">
+										<template name="model">
+											<comboitem
+												label="@load(each.tenChuongTrinh)" />
+										</template>
+									</combobox>
+								</div>
+							</div>
+						</div>
+					</div>
+						<div class="col-md-12">
+							<div class="col-md-8">
+									<x:button style="margin-left: 10px;"
+										class="btn btn-success pull-right"
+										onClick="@command('saveDangKyMoi', vm=vm, ngTao=nhanVien)">
+										<n:i class="fa fa-save"></n:i>
+										&#160;&#160;Lưu
+									</x:button>
+							</div>
+							<div class="col-md-4">
+								<n:button class="btn btn-default"
+									onClick="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')">
+									<n:i class="fa fa-remove"></n:i>&#160;&#160;
+									Hủy
+								</n:button>
+							</div>
+						</div>
+				</n:fieldset>
+			</n:form>
+			</div>
+			</div>
+		</div>
+	</div>
+
+</zk>

@@ -1,0 +1,208 @@
+<?meta http-equiv="content-type" content="text/html; charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"?>
+<?page id="trangchu_page" title="Trang chủ"?>
+<?meta name="description" content=""?>
+
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" xmlns:w="client">
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"/>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"/>
+	<style src="/frontend/assetsfe/css/layout/wide.css" />
+	<style src="/frontend/assetsfe/css/switcher.css" />
+	<style src="/frontend/assetsfe/css/bootstrap.min.css" />
+	<style src="/frontend/assetsfe/css/style.css" />
+	<style src="/frontend/assetsfe/css/fractionslider.css" />
+	<style src="/frontend/assetsfe/css/style-fraction.css" />
+	<style src="/frontend/assetsfe/css/animate.css" />
+	<style src="/frontend/assetsfe/css/style.css" />
+	<style>
+	.notice{
+	margin: 0px 10px 0px 0;
+    position: relative;
+	}
+	.notice .abell{
+		display: block;
+	    margin: 0;
+	    outline: none;
+	    padding: 4px 7px 0;
+	    position: relative;
+	    text-decoration: none;
+	}
+	.jewelCount{
+		position: absolute;
+    right: -10px;
+    top: 0px;
+	}
+	.notificationsCountValue{
+	background-color: #fa3e3e;
+    border-radius: 2px;
+    color: #fff;
+    padding: 1px 3px;
+    background-clip: padding-box;
+    display: inline-block;
+    font-family: 'helvetica neue', Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    -webkit-font-smoothing: subpixel-antialiased;
+    line-height: 1.3;
+    min-height: 13px;
+	}
+	.accessible_elem{
+	clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+	}
+	._51lp {
+	background-clip: padding-box;
+    display: inline-block;
+    font-family: 'helvetica neue', Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    -webkit-font-smoothing: subpixel-antialiased;
+    line-height: 1.3;
+    min-height: 13px;
+	}
+	._5ugg, ._3z_5{
+	background-color: #fa3e3e;
+    border-radius: 2px;
+    color: #fff;
+    padding: 1px 3px;
+	}
+	</style>
+	<zscript>
+		context = Executions.getCurrent().getContextPath();
+	</zscript>
+	<n:header id="header">
+		<n:div id="top-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-9 top-info hidden-xs">
+						<n:span>
+							<n:i class="fa fa-phone"></n:i>
+							Phone: (123) 456-7890
+						</n:span>
+						<n:span>
+							<n:i class="fa fa-envelope"></n:i>
+							Email: mail@example.com
+						</n:span>
+						
+					</div>
+		           	
+					<div class="col-sm-3 mast" zk:if="${nhanVien eq null}">
+						<a href="/c/signup" >
+							Đăng ký
+						</a>|
+						<a href="/c/signin" >
+							Đăng nhập
+						</a>
+					</div>
+					<div class="col-sm-3 mast" zk:if="${nhanVien ne null}">
+						
+						<a href="/nguoidung" zk:if="${nhanVien.getChucVu().equals('admin')}">
+							Quản lý |
+						</a>
+						<a href="/c/thongtincanhan">
+							Xin chào ${nhanVien.getTen() }
+						</a>|
+						<a apply="org.zkoss.bind.BindComposer"
+							viewModel="@id('vm') @init('vn.cal.service.NhanVienService')"
+							onClick="@command('logout')">
+							Đăng xuất
+						</a>
+					</div>
+				</div>
+			</div>
+		</n:div>
+		<n:div id="logo-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-sm-3 ">
+						<n:div id="logo">
+							<n:h1>
+								<a href="/">
+									<n:img alt="logo" src="${context}/frontend/assetsfe/images/logo.png" />
+								</a>
+							</n:h1>
+						</n:div>
+					</div>
+
+					<div class="col-lg-9 col-sm-9">
+						<div class="navbar navbar-default navbar-static-top">
+							<div class="navbar-header">
+								<n:button type="button"
+									class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+									<n:span class="sr-only">
+										Toggle navigation
+									</n:span>
+									<n:span class="icon-bar"></n:span>
+									<n:span class="icon-bar"></n:span>
+									<n:span class="icon-bar"></n:span>
+								</n:button>
+							</div>
+							
+							<div class="navbar-collapse collapse">
+								<n:ul class="nav navbar-nav">
+									<n:li>
+										<a href="/">Trang chủ</a>
+									</n:li>
+									<n:li  class="${resource eq 'blog' ? 'dropdown active' : 'dropdown'}">
+							            <n:a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+											Blog
+											<n:span class="caret"></n:span>
+							            </n:a>
+						            	<n:ul class="dropdown-menu">
+											<n:li class="${resource eq 'blog' ? 'active' : ''}">
+												<a href="/c/blog">
+													Bài đăng
+												</a>
+											</n:li>
+											<n:li class="${resource eq 'trangcanhan' ? 'active' : ''} " zk:if="${nhanVien ne null}">
+												<a href="/c/trangcanhan">
+													Bài đăng cá nhân
+												</a>
+											</n:li>
+										</n:ul>
+				          			</n:li>
+									<n:li  class="${resource eq 'danhsachchuongtrinh' or resource eq 'dangkyhienmau' ? 'dropdown active' : 'dropdown'}">
+										<n:a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+											Chương trình
+											<n:span class="caret"></n:span>
+							            </n:a>
+										<n:ul class="dropdown-menu">
+											<n:li class="${resource eq 'blog' ? 'active' : ''}">
+												<a href="/c/danhsachchuongtrinh">
+													Danh sách
+												</a>
+											</n:li>
+											<n:li class="${resource eq 'dangkyhienmau' ? 'active' : ''}" zk:if="${nhanVien ne null}">
+												<a href="/c/dangkyhienmau">
+													Form đăng ký
+												</a>
+											</n:li>
+										</n:ul>
+									</n:li >
+									<n:li class="${resource eq 'danhsachnguoidung' ? 'active' : ''}" zk:if="${nhanVien ne null}">
+										<a href="/c/danhsachnguoidung">
+											Người dùng
+										</a>
+									</n:li >
+									<n:li class="${resource eq 'huongdan' ? 'active' : ''}">
+										<a href="/c/huongdan">
+											Hướng dẫn
+										</a>
+									</n:li>
+									<n:li class="${resource eq 'lienhe' ? 'active' : ''}">
+										<a href="/c/lienhe">
+											Liên hệ
+										</a>
+									</n:li>
+								</n:ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</n:div>
+	</n:header>
+</zk>

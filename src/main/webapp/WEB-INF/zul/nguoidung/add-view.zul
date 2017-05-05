@@ -1,0 +1,139 @@
+<window xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" apply="org.zkoss.bind.BindComposer"
+	id="wdn" border="normal" mode="modal" action="show: slideIn"
+	contentStyle="overflow:auto;" closable="true" title="${arg.save}"
+	onClose="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')"
+	whatever="@load(false, after='saveDonVi') @converter('vn.cal.service.DetachConverter')"
+	viewModel="@id('vm') @init(arg.model)" validationMessages="@id('vmsgs')" width="800px">
+	<zscript>
+		vmArgs = arg.get("vmArgs");
+		System.out.println("vmArgs " +vmArgs);
+	</zscript>
+	
+	<div class="row box-body">
+		<div class="col-md-6">
+			<div class="form-group">
+				<x:label>
+					Họ Tên
+					<n:small class="required">*</n:small>
+				</x:label>
+				<textbox class="form-control" width="100%"
+					maxlength="255"
+					value="@bind(vm.hoVaTen) @save(vm.hoVaTen, before={'saveNguoiDung'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+				<label class="error"
+					value="@load(vmsgs[self.previousSibling])" />
+			</div>
+			<div class="form-group">
+				<x:label>
+					Email
+					<n:small class="required">*</n:small>
+				</x:label>
+				<textbox class="form-control" width="100%"
+					maxlength="255"
+					value="@bind(vm.email) @save(vm.email, before={'saveNguoiDung'}) @validator('vn.cal.core.BaseValid', constraint='no empty, /.+@.+\\.[a-z]+/', cmsg='Địa chỉ email không đúng định dạng.')" />
+				<label class="error"
+					value="@load(vmsgs[self.previousSibling])" />
+			</div>
+			<div class="form-group" if="${vm.noId()}">
+				<x:label>Mật khẩu<n:small class="required">*</n:small></x:label>
+				<textbox type="password" width="100%" maxlength="255"
+					class="form-control"
+					value="@bind(vm.matKhau2) @save(vm.matKhau2, before={'saveNguoiDung'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+				<label class="error"
+					value="@load(vmsgs[self.previousSibling])" />
+			</div>
+			<div class="form-group" if="${vm.noId()}">
+				<x:label>Xác nhận mật khẩu<n:small class="required">*</n:small></x:label>
+				<textbox type="password" width="100%" maxlength="255"
+					class="form-control"
+					value="@bind(vm.matKhau) @save(vm.matKhau, before={'saveNguoiDung'}) @validator('vn.cal.core.BaseValid', constraint='no empty', password=vm.matKhau2)" />
+				<label class="error"
+					value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		<div class="form-group" if="${!vm.noId()}">
+				<vlayout>	
+					<groupbox mold="3d" class="" open="false" width="100%">
+						<caption class="">
+							<n:i class="fa fa-edit"></n:i> <label value="Đổi mật khẩu"/> 
+						</caption>
+						<div class="">
+							<div class="form-group">
+								<x:label>Mật khẩu</x:label>
+								<textbox class="form-control" width="100%" type="password" maxlength="255"
+									value="@bind(vm.matKhau2) @save(vm.matKhau2, before='saveNguoiDung')" />
+							</div>
+							<div class="form-group">
+								<x:label>Xác nhận mật khẩu</x:label>
+								<textbox class="form-control" width="100%" type="password" maxlength="255"
+									value="@save(vm.matKhau2, before='saveNguoiDung') @validator('vn.cal.core.BaseValid', password=vm.noId() ? '' : vm.matKhau2)" />
+								<label class="error" value="@load(vmsgs[self.previousSibling])" />
+							</div>
+						</div>
+					</groupbox>
+				</vlayout>
+			</div>
+			<div class="form-group">
+				<x:label>Ngày sinh</x:label>
+				<datebox cols="12" width="100%" placeholder="dd/MM/yyyy"
+					format="dd/MM/yyyy"
+					value="@bind(vm.ngaySinh) @save(vm.ngaySinh, before={'saveNguoiDung'})"
+					readonly="false" />
+				<label class="error"
+					value="@load(vmsgs[self.previousSibling])" />
+
+			</div>
+			<div class="form-group">
+				<x:label>Số điện thoại<n:small class="required">*</n:small></x:label>
+				<textbox width="100%" maxlength="255" class="form-control"
+					value="@bind(vm.soDienThoai) @save(vm.soDienThoai, before={'saveNguoiDung'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+				<label class="error"
+					value="@load(vmsgs[self.previousSibling])" />
+			</div>
+			<div class="form-group">
+				<x:label>Tên cơ quan</x:label>
+				<textbox width="100%" maxlength="255"
+					class="form-control" value="@bind(vm.tenCoQuan)" />
+			</div>
+			<div class="form-group">
+				<x:label>Email Cơ quan</x:label>
+				<textbox width="100%" maxlength="255"
+					class="form-control" value="@bind(vm.emailCoQuan)" />
+			</div>
+			<div class="form-group">
+				<checkbox label="Áp dụng"
+					checked="@bind(vm.publishStatus)" />
+			</div>
+			</div>
+			
+		<div class="col-md-6">
+			<vlayout>
+				<groupbox closable="false" mold="3d" class="mis-group-user mis-mend">
+					<div class="mis-pd10">
+						<listbox model="@bind(vaiTro.vaiTroService.targetQuery.fetch())"
+							selectedItems="@bind(vm.vaiTros)"
+							multiple="false"  rows="12" checkmark="true">
+							<listhead>
+								<listheader label="Tên vai trò" ><n:small class="required"> *</n:small></listheader>
+							</listhead>
+							<template name="model">
+								<listitem>
+									<listcell label="${each.tenVaiTro}" />
+								</listitem>
+							</template>
+						</listbox>
+					</div>
+				</groupbox>
+				<label class="error" value="@load(vmsgs['lblErrVaiTros'])" />
+			</vlayout>
+		</div>
+			
+		</div>
+		<div class="row box-footer">  
+		<x:button class="btn btn-default pull-right" onClick="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')">
+			Hủy
+		</x:button>
+		<x:button style="margin-right: 10px;" class="btn btn-primary pull-right"
+			onClick="@command('saveNguoiDung', list=vmArgs, attr='targetQuery', wdn=wdn)">
+			<n:i class="fa fa-save"></n:i>&#160;&#160;Lưu
+		</x:button>
+	</div>
+</window>

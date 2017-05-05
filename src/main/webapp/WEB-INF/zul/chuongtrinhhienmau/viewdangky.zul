@@ -1,0 +1,2 @@
+<?component name="listdangky" inline="true" macroURI="listdangky.zul"?>
+<listdangky model="${arg.vm}" vmArgs="${arg.vmArgs}" save="Danh sách đăng ký" />

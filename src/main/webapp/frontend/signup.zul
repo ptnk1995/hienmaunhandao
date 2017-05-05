@@ -1,0 +1,112 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk">
+	<window class="container" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('vn.cal.service.HomeService')"
+		validationMessages="@id('vmsgs')">
+		<zscript>
+		nv = new vn.cal.model.NhanVien();
+		</zscript>
+		<div class="row" >
+			<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 well">
+				<n:legend style="text-align: center;">
+					<a href="http://www.jquery2dotnet.com" style="color: #ea2e4f;">
+						<n:i class="glyphicon glyphicon-globe"></n:i>
+					</a>
+					Đăng ký tài khoản!
+				</n:legend>
+				<n:form action="#" method="post" class="form" role="form">
+					<div class="col-md-12">
+						<div class="form-group">
+							<x:label>
+								Họ Tên
+								<n:small class="required">*</n:small>
+							</x:label>
+							<textbox class="form-control" width="100%" id="hovaten"
+								maxlength="255"
+								value="@bind(nv.hoVaTen) @save(nv.hoVaTen, before={'saveRegister'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+							<label class="error"
+								value="@load(vmsgs[self.previousSibling])" />
+						</div>
+					</div>
+					
+					<div class="col-md-12">
+						<div class="form-group">
+							<x:label>
+								Email
+								<n:small class="required">*</n:small>
+							</x:label>
+							<textbox class="form-control" width="100%"
+								maxlength="255"
+								value="@bind(nv.email) @save(nv.email, before={'saveRegister'}) @validator('vn.cal.core.BaseValid', constraint='no empty, /.+@.+\\.[a-z]+/', cmsg='Địa chỉ email không đúng định dạng.')" />
+							<label class="error"
+								value="@load(vmsgs[self.previousSibling])" />
+						</div>
+					</div>
+					<n:div class="col-md-6">
+						<div class="form-group" if="${nv.noId()}">
+							<x:label>
+								Mật khẩu
+								<n:small class="required">*</n:small>
+							</x:label>
+							<textbox type="password" width="100%"
+								maxlength="255" class="form-control"
+								value="@bind(nv.matKhau2) @save(nv.matKhau2, before='saveRegister') @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+							<label class="error"
+								value="@load(vmsgs[self.previousSibling])" />
+						</div>
+					</n:div>
+					<n:div class="col-md-6">
+						<div class="form-group" if="${nv.noId()}">
+							<x:label>
+								Xác nhận mật khẩu
+								<n:small class="required">*</n:small>
+							</x:label>
+							<textbox type="password" width="100%"
+								maxlength="255" class="form-control"
+								value="@bind(nv.matKhau) @save(nv.matKhau, before='saveRegister') @validator('vn.cal.core.BaseValid', constraint='no empty', password=nv.matKhau2)" />
+							<label class="error"
+								value="@load(vmsgs[self.previousSibling])" />
+						</div>
+					</n:div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<x:label>Ngày sinh</x:label>
+							<n:br />
+							<datebox cols="12"
+								placeholder="dd/MM/yyyy" format="dd/MM/yyyy"
+								value="@bind(nv.ngaySinh) @save(nv.ngaySinh, before={'saveRegister'})"
+								readonly="false" />
+							<label class="error"
+								value="@load(vmsgs[self.previousSibling])" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<x:label>
+								Số điện thoại
+								<n:small class="required">*</n:small>
+							</x:label>
+							<textbox width="100%" maxlength="255"
+								class="form-control"
+								value="@bind(nv.soDienThoai) @save(nv.soDienThoai, before={'saveRegister'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+							<label class="error"
+								value="@load(vmsgs[self.previousSibling])" />
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<x:label>Tên cơ quan</x:label>
+							<textbox width="100%" maxlength="255"
+								class="form-control" value="@bind(nv.tenCoQuan)" />
+						</div>
+					</div>
+					<div class="col-md-12">
+						<x:button style="margin-right: 10px;" class="btn btn-default pull-right"
+							onClick="@command('saveRegister', vm=nv, mk2 = nv.matKhau2)">
+							<n:i class="fa fa-save"></n:i>&#160;&#160;Lưu
+						</x:button>
+					</div>
+				</n:form>
+			</div>
+		</div>
+	</window>
+</zk>

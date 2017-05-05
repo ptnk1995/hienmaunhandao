@@ -1,0 +1,60 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk">
+
+	<div children="@load(vm.page(vm.targetQuery).fetch())">
+		<template name="children" var="each">
+			<div class="[ panel panel-default ] panel-google-plus" zk:if="${each != nhanVien}">
+				<div class="panel-heading">
+					<image class="[ img-circle pull-left ]" height="80px"
+						content="@load(each.imageContent eq null ? imagevar2 : each.imageContent)">
+					</image>
+					<n:h3>${each.hoVaTen}</n:h3>
+					<n:h5>
+						<n:span>
+							Email:
+							<label value="@load(each.email)" />
+						</n:span>
+					</n:h5>
+						<div children="@load(vm.getDangKy(each).fetch())">
+							<template name="children" var="dk">
+								<div apply="org.zkoss.bind.BindComposer"
+									viewModel="@id('vmArgs') @init('vn.cal.model.DeNghi')">
+									
+									<n:h5>
+										<n:span>Nhóm máu: <label value="@load(dk.nhomMau.tenNhom) @bind(vmArgs.nhomMau)" /></n:span>
+										-<n:span>Loại máu: <label value="@load(dk.nhomMau.loaiMau.tenLoai) @bind(vmArgs.nhomMau.loaiMau)" /></n:span>
+										|
+										<n:span>
+											<n:i class="fa fa-check"></n:i>
+											<a href="#">
+												 ${dk.soLanHienTruoc } lần hiến máu
+											</a>
+										</n:span>
+									</n:h5>
+									<n:h5>
+										<n:span>Thời gian sắp hiến: <label value="@load(dk.thoiGianSapHien) @converter('formatedDate',format='dd/MM/yyyy')" /></n:span>
+										-
+										<n:span>Số điện thoại: <label value="@load(dk.soDienThoai)" /></n:span>
+									</n:h5>
+									<button
+										class="${dk.style} ${vmArgs.isDeNghi(nhanVien, each,  dk.ngayTao)}"
+										label="@load(vmArgs.button)"
+										onClick="@command('newDeNghi', vm=vmArgs,nguoiGui=nhanVien, nguoiNhan=dk.nguoiTao, attr='isDeNghi', button=vmArgs.button)">
+
+									</button>
+									<button class="btn btn-default" href="/c/trangcanhan?id=${each.id}">Xem chi tiết</button>
+								</div>
+							</template>
+						</div>
+						<div zk:if="${(vm.getDangKy(each).fetch()).size() == 0}">
+							<button class="btn btn-default" href="/c/trangcanhan?id=${each.id}">Xem chi tiết</button>
+						</div>
+						
+				</div>
+			</div>
+		</template>
+		
+		</div>
+		<paging class="list-news" pageSize="@load(vm.arg.pagesize)" totalSize="@load(vm.targetQuery.fetchCount())" mold="os"
+            			visible="@load(vm.targetQuery.fetchCount() > vm.arg.pagesize ? true : false)"
+            			activePage="@bind(vm.arg.page)" onPaging="@command('cmd', notify=vm, atr='targetQuery')" />
+</zk>

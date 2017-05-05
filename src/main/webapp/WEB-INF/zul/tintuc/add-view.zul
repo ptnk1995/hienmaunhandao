@@ -1,0 +1,62 @@
+<window xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" apply="org.zkoss.bind.BindComposer"
+	id="wdn" border="normal" mode="modal" action="show: slideIn"
+	contentStyle="overflow:auto;" closable="true" title="${arg.save}"
+	onClose="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')"
+	whatever="@load(false, after='saveDonVi') @converter('vn.cal.service.DetachConverter')"
+	viewModel="@id('vm') @init(arg.model)" validationMessages="@id('vmsgs')" width="50%">
+	<zscript>
+		vmArgs = arg.get("vmArgs");
+		System.out.println("vmArgs " +vmArgs);
+	</zscript>
+	
+	<div class="row box-body">
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Tiêu đề<n:small class="required"> *</n:small></x:label>
+				<textbox class="form-control" width="100%" maxlength="255"
+					value="@bind(vm.tieuDe) @save(vm.tieuDe, before={'saveTinTuc'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+				<label class="error" value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Danh mục tin</x:label>
+				<combobox readonly="true" style="display:block"
+					width="100%" model="@load(vm.listDanhMuc)" selectedItem="@bind(vm.danhMuc)">
+					<template name="model">
+						<comboitem label="@load(each.tenDanhMuc)" />
+					</template>
+				</combobox>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>
+					Nội dung
+				</x:label>
+				<ckeditor toolbar="Full" id="WYSIWYG" width="100%"
+					height="600px"
+					filebrowserBrowseUrl="${labels.filestore.files}"
+					filebrowserImageUploadUrl="@load(vm.urlBrowseImage)"
+					customConfigurationsPath="/js/configWYSIYG.js"
+					value="@bind(vm.noiDung) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+			</div>
+		</div>
+
+		<div class="col-md-12">
+			<div class="form-group">
+				<checkbox label="Áp dụng" checked="@bind(vm.publishStatus)" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="row box-footer">  
+		<x:button class="btn btn-default pull-right" onClick="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')">
+			Hủy
+		</x:button>
+		<x:button style="margin-right: 10px;" class="btn btn-primary pull-right"
+			onClick="@command('saveTinTuc', list=vmArgs, attr='targetQuery', wdn=wdn)">
+			<n:i class="fa fa-save"></n:i>&#160;&#160;Lưu
+		</x:button>
+	</div>
+</window>

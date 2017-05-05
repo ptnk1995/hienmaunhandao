@@ -1,0 +1,46 @@
+<window xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" apply="org.zkoss.bind.BindComposer"
+	id="wd" border="normal" mode="modal" action="show: slideIn"
+	contentStyle="overflow:auto;" closable="true" title="${arg.save}"
+	onClose="@command('invokeGG', notify=vmArgs, detach=wd, attr='targetQuery')"
+	whatever="@load(false, after='saveDonVi') @converter('vn.cal.service.DetachConverter')"
+	viewModel="@id('vm') @init(arg.model)" validationMessages="@id('vmsgs')" width="40%">
+	<zscript>
+		vmArgs = arg.get("vmArgs");
+		vm = arg.get("vm");
+		System.out.println("vmArgs " +vmArgs);
+		System.out.println("vm " +vm);
+	</zscript>
+	<div class="row box-body">
+		<div class="form-group">
+				<x:label>Chọn nhóm máu<n:small class="required"> *</n:small></x:label>
+				<listbox model="@load(vm.listNhomMau)" checkmark="true"
+					multiple="true" selectedItems="@bind(vm.nhomMaus)" onSelect="@command('selectNhomMau')" >
+					<listhead>
+						<listheader width="32px" />
+						<listheader />
+					</listhead>
+					<template name="model" >
+						<listitem>
+							<listcell />
+							<listcell label="@load(each.tenNhom)" />
+						</listitem>
+					</template>
+				</listbox>
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<checkbox label="Áp dụng" checked="@bind(vm.publishStatus)" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="row box-footer">  
+		<x:button class="btn btn-default pull-right" onClick="@command('invokeGG', notify=vmArgs, detach=wd, attr='targetQuery')">
+			Hủy
+		</x:button>
+		<x:button style="margin-right: 10px;" class="btn btn-primary pull-right"
+			onClick="@command('saveChiTiet', vm=vmArgs, attr='nhomMaus', wdn=wd)">
+			<n:i class="fa fa-save"></n:i>&#160;&#160;Lưu
+		</x:button>
+	</div>
+</window>

@@ -1,0 +1,104 @@
+<window xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk" apply="org.zkoss.bind.BindComposer"
+	id="wdn" border="normal" mode="modal" action="show: slideIn"
+	contentStyle="overflow:auto;" closable="true" title="${arg.save}"
+	onClose="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')"
+	whatever="@load(false, after='saveDonVi') @converter('vn.cal.service.DetachConverter')"
+	viewModel="@id('vm') @init(arg.model)" validationMessages="@id('vmsgs')" width="70%">
+	<zscript>
+		vmArgs = arg.get("vmArgs");
+		vm = arg.get("vm");
+		System.out.println("vmArgs " +vmArgs);
+		System.out.println("vm " +vm);
+	</zscript>
+	<div class="row box-body">
+		<div class="col-md-12">
+			<div class="form-group">
+				<x:label>Tên chương trình<n:small class="required"> *</n:small></x:label>
+				<textbox class="form-control" width="100%" maxlength="255"
+					value="@bind(vm.tenChuongTrinh) @save(vm.tenChuongTrinh, before={'saveChuongTrinh'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+				<label class="error" value="@load(vmsgs[self.previousSibling])" />
+			</div>
+		</div>
+			<div class="form-group" style="margin:15px; width:30%;">
+				<x:label>Ngày bắt đầu<n:small class="required"> *</n:small></x:label>
+				<datebox cols="12" width="100%" placeholder="dd/MM/yyyy" 
+				     format="dd/MM/yyyy" value="@bind(vm.ngayBatDau)@save(vm.ngayBatDau, before={'saveChuongTrinh'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" readonly="false" />
+				<label class="error" value="@load(vmsgs[self.previousSibling])" />
+			</div>
+			<div class="form-group" style="margin:15px;width:30%;">
+				<x:label>Ngày kết thúc<n:small class="required"> *</n:small></x:label>
+				<datebox cols="12" width="100%" placeholder="dd/MM/yyyy"
+				     format="dd/MM/yyyy" value="@bind(vm.ngayKetThuc)@save(vm.ngayKetThuc, before={'saveChuongTrinh'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" readonly="false"/>
+				<label class="error" value="@load(vmsgs[self.previousSibling])" />
+			</div>
+			<div style="margin: 15px;">
+				<x:label>Các địa điểm tổ chức chương trình</x:label>
+				<grid id="grid" mold="paging" model="@load(vm.listChiTiet)" pageSize="4" emptyMessage="Không có dữ liệu">
+					<columns>
+						<column label="Quận/Huyện" />
+						<column label="Tỉnh/Thành phố" />
+						<column label="Địa chỉ" />
+						<column label="Trạng thái" />
+						<column label="Thao tác" />
+					</columns>
+					<template name="model">
+						<row>
+							<label value="@load(each.thanhPho.tenThanhPho)" />
+							<label value="@load(each.quanHuyen.tenQuanHuyen)" />
+							<label value="@load(each.diaChi)" />
+							<label value="@load(each.publishStatusText)" />
+							<div class="text-align-center">
+								<x:button title="Xem"
+									class="btn btn-warning btn-xs"
+									onClick="@command('redirectPage', zul='chuongtrinhhienmau/view-chitiet.zul', vmArgs=vm, vm=each)">
+									<n:i class="fa fa-eye"></n:i>
+								</x:button>
+								<x:button class="btn btn-danger btn-xs"
+									title="Xóa"
+									onClick="@command('deleteChiTiet',notify=each, attr='listChiTiet')">
+									<n:i class="fa fa-trash"></n:i>
+								</x:button>
+							</div>
+						</row>
+					</template>
+				</grid>
+			</div>
+			<n:div class="box-header">
+			<n:h3 class="box-title"></n:h3>
+			<n:div class="box-tool">
+				<x:button class="btn btn-success"
+					onClick="@command('redirectPage', zul='chuongtrinhhienmau/add-chitiet.zul', vmArgs=vm, vm=vm)">
+					<n:i class="fa fa-plus"></n:i>
+					Chi tiết
+				</x:button>
+			</n:div>
+		</n:div>
+		<div class="col-md-12">
+					<div class="form-group">
+						<x:label>
+							Mô tả
+						</x:label>
+						<ckeditor toolbar="Full" id="WYSIWYG" width="100%"
+							height="300px"
+							filebrowserBrowseUrl="${labels.filestore.files}"
+							customConfigurationsPath="/js/configWYSIYG.js"
+							value="@bind(vm.moTa) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+					</div>
+				</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<checkbox label="Áp dụng" checked="@bind(vm.publishStatus)" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="row box-footer">  
+		<x:button class="btn btn-default pull-right" onClick="@command('invokeGG', notify=vmArgs, detach=wdn, attr='targetQuery')">
+			Hủy
+		</x:button>
+		<x:button style="margin-right: 10px;" class="btn btn-primary pull-right"
+			onClick="@command('saveChuongTrinh', list=vmArgs, attr='targetQuery', wdn=wdn)">
+			<n:i class="fa fa-save"></n:i>&#160;&#160;Lưu
+		</x:button>
+	</div>
+</window>

@@ -1,0 +1,3 @@
+<?component name="add-binhluan-view" inline="true" macroURI="add-binhluan-view.zul"?>
+<add-binhluan-view model="${entry.binhLuanService.type().newInstance()}"  vmArgs="${arg.vmArgs}" save="Thêm bình luận cho bài đăng" />
+

@@ -1,0 +1,128 @@
+<zk xmlns:n="native" xmlns:x="xhtml" xmlns:zk="zk">
+	<zscript><![CDATA[
+		import java.awt.*;
+		import java.awt.image.*;
+		import java.awt.geom.*;
+		BufferedImage imagevar2 = new BufferedImage(80, 80, BufferedImage.TYPE_INT_ARGB);
+		Long id = null;
+		if(Executions.getCurrent().getParameter("id") != null){
+			id = Long.parseLong(Executions.getCurrent().getParameter("id"));}
+	]]></zscript>
+	<n:h1>Đăng bài</n:h1>
+	<n:form>
+		<div class="form-group has-error">
+			<x:label>
+				Tiêu đề
+				<n:small class="required">*</n:small>
+			</x:label>
+			<textbox class="form-control" width="100%" maxlength="255"
+				value="@bind(vm.tieuDe) @save(vm.tieuDe, before={'saveBaiDangMoi'}) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+			<label class="error"
+				value="@load(vmsgs[self.previousSibling])" />
+		</div>
+
+		<div class="form-group">
+			<x:label>
+				Nội dung
+				<n:small class="required">*</n:small>
+			</x:label>
+			<textbox width="100%" rows="5" class="form-control"
+				value="@bind(vm.noiDung) @validator('vn.cal.core.BaseValid', constraint='no empty')" />
+		</div>
+		<div class="form-group">
+			<div zclass="img-crop">
+				<button class=" fa fa-camera"
+					upload="true,maxsize=50000"
+					onUpload="@command('attachImages',media=event.media,vmsgs=vmsgs)">
+					Upload ảnh
+				</button>
+				<zscript>
+					System.out.print(vm.wd);
+				</zscript>
+				<image id="imageCmp" width="@load(vm.wd)" 
+					sclass="mis-image-upload"
+					content="@bind(vm.imageContent eq null ? imagevar2 : vm.imageContent)">
+				</image>
+			</div>
+		</div>
+		<div class="form-group" apply="org.zkoss.bind.BindComposer"
+			viewModel="@id('vm2') @init('vn.cal.service.BaiDangService')">
+			<x:label>Tại khu vực </x:label>
+			<combobox readonly="true" style="display:block" 
+				model="@load(vm2.listThanhPho)" selectedItem="@bind(vm.thanhPho)">
+				<template name="model">
+					<comboitem label="@load(each.tenThanhPho)" />
+				</template>
+			</combobox>
+			<label class="error"
+				value="@load(vmsgs[self.previousSibling])" />
+		</div>
+		<div class="form-group">
+			<x:label>Chọn nhóm máu bạn cần</x:label>
+			<listbox model="@load(vm.listNhomMau)" checkmark="true"
+				multiple="true" selectedItems="@bind(vm.nhomMaus)"
+				onSelect="@command('selectNhomMau')">
+				<listhead>
+					<listheader width="32px" />
+					<listheader />
+				</listhead>
+				<template name="model">
+					<listitem>
+						<listcell />
+						<listcell label="@load(each.tenNhom)" />
+					</listitem>
+				</template>
+			</listbox>
+		</div>
+
+		<div class="form-group">
+			<x:button style="margin-right: 10px;"
+				class="btn btn-success pull-right" data-toggle="modal" data-target="#active"
+				onClick="@command('saveBaiDangMoi', list=vm2, nguoi=nhanVien, attr='listBaiDang', res=resource)">
+				<n:i class="fa fa-save"></n:i>
+				&#160;&#160;Đăng
+			</x:button>
+		</div>
+
+	</n:form>
+	 <n:div class="modal fade" id="active" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <n:button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</n:button>
+                        <n:h4 class="panel-title" id="contactLabel"><n:i class="fa fa-check"></n:i> Người dùng phù hợp với yêu cầu của bạn !</n:h4>
+                    </div>
+                    <div class="panel-body" >
+	                    <div class="row sub_content" children="@load(vm.nhomMaus)" >
+	                    	<template name="children" var="nm">
+								<div children="@load(nm.listNhanVien)">
+									<template name="children" var="nv">
+				                    	<div class="col-lg-3 col-md-3 col-sm-6">
+					                        <div class="our-team">
+					                            <div class="pic">
+					                            	<n:h5 style="height:24px;overflow:hidden;"><label value="@load(nv.hoVaTen)" />- <label value="@load(nv.nhomMau.tenNhom)" /></n:h5>
+					                                <image width="119px" height="88px"
+					                                	content="@load(nv.imageContent eq null ? imagevar2 : nv.imageContent)">
+					                                </image>
+					                                <div class="social_media_team">
+					                                    <n:ul class="team_social">
+					                                        <n:li><n:a class="fb" href="#." data-placement="top" data-toggle="tooltip" title="Facbook"><n:i class="fa fa-facebook"></n:i></n:a></n:li>
+					                                        <n:li><n:a class="twtr" href="${ctxPath }/c/trangcanhan?id=${nv.id}" data-placement="top" data-toggle="tooltip" title="Xem"><n:i class="fa fa-arrow-right"></n:i></n:a></n:li>
+					                                        
+					                                    </n:ul>
+					                                </div>
+					                            </div>
+					                        </div>
+				                    	</div>
+		                    		</template>
+		                    	</div>
+                    		</template>
+		                 </div>
+                    </div><!-- 
+                    <div class="panel-body"  zk:if="{(vm.nhomMaus.size()) == 0}">
+                    	<label value="Bạn chưa chọn nhóm máu !" />
+                    </div> -->
+                </div>
+            </div>
+     </n:div>
+</zk>
